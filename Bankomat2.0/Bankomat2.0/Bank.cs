@@ -12,6 +12,10 @@ namespace Bankomat2._0
         // Bank namn
         public string Name { get; set; }
 
+        Dictionary<string, Account> accounts;
+
+        public List<Event> eventLog { get; set; }
+
         public void ConductTransaction()
         {
 
@@ -24,7 +28,7 @@ namespace Bankomat2._0
 
         public void GetPerson(string SSN)
         {
-
+            //SQL
         }
     }
 }
