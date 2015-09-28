@@ -5,20 +5,26 @@ using System.Web;
 
 namespace Bankomat2._0
 {
-    public class Click : iEvent
+    public class Authentification : iEvent
     {
+        private int pin;
 
-        private string ATM;
-
-        public Click(string ATM)
+        public Authentification (int pin)
         {
-            this.atm = ATM;
+            this.PIN = pin;
         }
 
-        public string atm
+        public string client
         {
-            get { return this.ATM; }
-            set { this.ATM = value; }
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public DateTime datum
@@ -59,5 +65,12 @@ namespace Bankomat2._0
                 throw new NotImplementedException();
             }
         }
+
+        public int PIN
+        {
+            get { return this.pin; }
+            set { this.pin = value; }
+        }
+
     }
 }
