@@ -39,9 +39,14 @@ namespace Bankomat2._0
         {
 
         }
-        private void AttemptLogin(string card, string pin)
+        private bool Authenticate(string card, string pin)
         {
-            
+            if (this.Bank.Authenticate(card, pin))
+            {
+                return true;
+            }
+            return false;
+
         }
     }
 }
