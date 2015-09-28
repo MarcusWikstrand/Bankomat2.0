@@ -11,6 +11,7 @@ namespace Bankomat2._0
         public decimal balance { get; set; }
         public List<Transaction> transactions { get; set; }
         public List<Customer> holders { get; set; }
+
         public bool MakeTransaction(decimal amount)
         {
             if (this.balance >= amount)
@@ -24,8 +25,7 @@ namespace Bankomat2._0
             }
             else
             {
-                // Oh you poor thing
-                return false;
+                throw new Exception("Not enough money.");
             }
             
         }

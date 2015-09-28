@@ -24,7 +24,7 @@ namespace Bankomat2._0
 
         public void Withdraw()
         {
-
+            
         }
 
         public void RegisterEvent()
