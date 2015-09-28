@@ -7,29 +7,41 @@ namespace Bankomat2._0
 {
     public class ATM
     {
+        public ATM()
+        {
+            Bank = new Bank();
+
+        }
         //Bankomatens ID för event logg
-        public string SerialNumber { get; set; }
+        private string SerialNumber { get; set; }
 
         //Max uttag för just den här bankomaten
-        public int MaxWithdrawalAmount { get; set; }
+        private const int MaxWithdrawalAmount = 5000;
+
+        // vilken bank?
+        private Bank Bank;
 
         //Vem använder bankomaten
-        public string CurrentUser { get; set; }
+        private string CurrentUser { get; set; }
 
         //Vilket konto används för transaktionen
-        public string SelectedAccount { get; set; }
+        private string SelectedAccount { get; set; }
 
         //Lista med tilgängliga sedlar
         List<Banknote> currentlyAvailableBanknotes = new List<Banknote>();
 
-        public void Withdraw()
+        private void Withdraw()
         {
-            
+
         }
 
         public void RegisterEvent()
         {
 
+        }
+        private void AttemptLogin(string card, string pin)
+        {
+            
         }
     }
 }
