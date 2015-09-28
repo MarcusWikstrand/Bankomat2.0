@@ -8,22 +8,24 @@ namespace Bankomat2._0
     public class Bank
     {
         //Bank identification code
-        public string Bic { get; set; }
+        private string Bic { get; set; }
         // Bank namn
-        public string Name { get; set; }
+        private string Name { get; set; }
+        // Account list
+        private Dictionary<string, Account> accounts { get; set; }
+        // max cash withdrawal per day
+        private int maxDailyWithdrawalAmount { get; set; }
+        // log 
+        private List<iEvent> eventLog { get; set; }
 
-        Dictionary<string, Account> accounts;
-
-        public List<iEvent> eventLog { get; set; }
-
-        public void ConductTransaction()
+        public bool ConductTransaction()
         {
-
+            return true;
         }
 
-        public void LogEvent()
+        public bool LogEvent()
         {
-
+            return true;
         }
 
         public void GetPerson(string SSN)
