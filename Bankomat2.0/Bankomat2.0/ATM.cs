@@ -16,6 +16,9 @@ namespace Bankomat2._0
         //Vilket konto används för transaktionen
         string selectedAccount;
 
+        //Lista med tilgängliga sedlar
+        List<Banknote> currentlyAvailableBanknotes = new List<Banknote>();
+
         public void Withdraw()
         {
 
