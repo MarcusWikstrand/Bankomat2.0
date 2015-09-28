@@ -10,6 +10,15 @@ namespace Bankomat2._0
         private string account;
         private decimal balance;
 
+        public ViewBalance(string client, string account, string description, decimal balance, bool outcome)
+        {
+            Client = client;
+            Account = account;
+            Balance = balance;
+            Outcome = outcome;
+            Description = description;
+        }
+
         public string Account
         {
             get { return this.account; }

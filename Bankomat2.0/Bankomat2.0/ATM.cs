@@ -42,7 +42,8 @@ namespace Bankomat2._0
         {
 
         }
-        private bool Authenticate(string card, int pin)
+
+        public bool Authenticate(string card, int pin)
         {
             try
             {
@@ -60,6 +61,16 @@ namespace Bankomat2._0
             }
             return false;
 
+        }
+
+        public List<string> GetHolderAccounts()
+        {
+            return Bank.GetHolderAccounts(SelectedCard);
+        }
+
+        public decimal ViewBalance(string accountNumber)
+        {
+            return Bank.GetBalance(accountNumber, ClientID);
         }
     }
 }

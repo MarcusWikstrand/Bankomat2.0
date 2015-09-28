@@ -10,19 +10,22 @@ namespace Bankomat2._0
         public Bank()
         {
             paymentCards = new Dictionary<string, PaymentCard>();
+            customers = new Dictionary<string, Customer>();
         }
         //Bank identification code
         private string Bic { get; set; }
         // Bank namn
         private string Name { get; set; }
         // Account list
-        private Dictionary<string, Account> accounts { get; set; }
+        private Dictionary<string, Account> Accounts { get; set; }
         // max cash withdrawal per day
         private int maxDailyWithdrawalAmount { get; set; }
         // log 
         private List<iEvent> eventLog { get; set; }
         // 
         private Dictionary<string, PaymentCard> paymentCards;
+
+        private Dictionary<string, Customer> customers;
 
         /// <summary>
         /// Hittar det kopplade kontot och genomför uttaget
@@ -42,6 +45,11 @@ namespace Bankomat2._0
         {
             Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök", outcome);
             eventLog.Add(auth);
+        }
+
+        public void LogEvent(string clientId, string accountNumber, Decimal balance)
+        {
+            ViewBalance vb = new ViewBalance(clientId, accountNumber, "Viewed the specified account balance.", balance, true);
         }
 
         public void GetPerson(string SSN)
@@ -64,6 +72,24 @@ namespace Bankomat2._0
                 return false;
             }
 
+        }
+
+        public List<string> GetHolderAccounts(string selectedCard)
+        {
+            PaymentCard pc = paymentCards[selectedCard];
+            Customer c = pc.holder;
+            List<string> cAccounts = (from account in Accounts where account.Value.holders.Contains(c) select account.Key) as List<string>;
+
+            return cAccounts;
+        }
+
+        public decimal GetBalance(string accountNumber, string clientId)
+        {
+            Account a = Accounts[accountNumber];
+            Decimal balance = a.Balance;
+            LogEvent(clientId, accountNumber, balance);
+
+            return balance;
         }
     }
 }
