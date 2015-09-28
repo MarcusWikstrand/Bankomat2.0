@@ -52,7 +52,7 @@ namespace Bankomat2._0
                 return true;
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Put ex on screen 
                 SelectedCard = null;

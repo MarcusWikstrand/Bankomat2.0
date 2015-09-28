@@ -38,9 +38,10 @@ namespace Bankomat2._0
             return true;
         }
 
-        public bool LogEvent()
+        public void LogEvent(string clientID, int pin, PaymentCard card)
         {
-            return true;
+            Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök",  true );
+            eventLog.Add(auth);
         }
 
         public void GetPerson(string SSN)

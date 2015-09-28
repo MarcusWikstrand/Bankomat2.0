@@ -23,7 +23,7 @@ namespace Bankomat2._0
 
         public string Account { get; set; }
 
-        public string client
+        public string Client
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Bankomat2._0
             }
         }
 
-        public DateTime datum
+        public DateTime Time
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Bankomat2._0
             }
         }
 
-        public string description
+        public string Description
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Bankomat2._0
             }
         }
 
-        public bool outcome
+        public bool Outcome
         {
             get
             {
