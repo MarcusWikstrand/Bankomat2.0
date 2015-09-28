@@ -12,5 +12,15 @@ namespace Bankomat2._0
         public int pan { get; set; }
         public Customer holder { get; set; }
         public Dictionary<int, Account>  connectedAccounts { get; set; }
+        private int failedAuthenticationAttempts;
+
+        public void RegisterFailedAuthAttempt()
+        {
+            failedAuthenticationAttempts++;
+            if (failedAuthenticationAttempts >= 3)
+            {
+                throw new Exception("Three failed attemtps to Authenticate");
+            }
+        }
     }
 }

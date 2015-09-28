@@ -37,14 +37,19 @@ namespace Bankomat2._0
         {
             //SQL
         }
-        public bool Authenticate(string card, string pin)
+        public bool Authenticate(string card, string pin, string clientID)
         {
             PaymentCard pc = paymentCards[card];
             if (pc.pin == pin)
             {
                 return true;
             }
-            return false;
+            else
+            {
+                pc.RegisterFailedAuthAttempt();
+                return false;
+            }
+
         }
     }
 }
