@@ -21,9 +21,6 @@ namespace Bankomat2._0
         // vilken bank?
         private Bank Bank;
 
-        //Vem använder bankomaten
-        private string CurrentUser { get; set; }
-
         //Vilket konto används för transaktionen
         private string SelectedAccount { get; set; }
 
