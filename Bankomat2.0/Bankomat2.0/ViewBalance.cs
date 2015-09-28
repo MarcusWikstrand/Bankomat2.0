@@ -5,23 +5,22 @@ using System.Web;
 
 namespace Bankomat2._0
 {
-    public class Transaction : iEvent
+    public class ViewBalance : iEvent
     {
+        private string account;
+        private decimal balance;
 
-        private decimal amount;
-
-        public Transaction (decimal amount)
+        public string Account
         {
-            this.Amount = amount;
-        } 
-
-        public decimal Amount
-        {
-            get { return this.amount; }
-            set { this.amount = value; }
+            get { return this.account; }
+            set { this.account = value; }
         }
 
-        public string Account { get; set; }
+        public decimal Balance
+        {
+            get { return this.balance; }
+            set { this.balance = value; }
+        }
 
         public string client
         {
