@@ -23,8 +23,18 @@ namespace Bankomat2._0
         private List<iEvent> eventLog { get; set; }
         // 
         private Dictionary<string, PaymentCard> paymentCards;
-        public bool ConductTransaction()
+
+        /// <summary>
+        /// Hittar det kopplade kontot och genomför uttaget
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public bool ConductTransaction(string cardNumber, decimal amount)
         {
+            PaymentCard pc = paymentCards[cardNumber];
+            Account currentAccount = pc.connectedAccount;
+            currentAccount.MakeTransaction(amount);
             return true;
         }
 

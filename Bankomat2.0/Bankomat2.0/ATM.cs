@@ -32,7 +32,7 @@ namespace Bankomat2._0
             withdrawalAmount = 0; //Kopplas till forms senare
             if (withdrawalAmount <= 2000)
         {
-            
+                Bank.ConductTransaction(SelectedCard, withdrawalAmount);
         }
             else new Exception("Amount is too big for this machine");//Specificiera: ska ett konto kunna ta ut max 2000 per dygn eller per gång?
             
