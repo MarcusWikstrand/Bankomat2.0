@@ -17,7 +17,9 @@ namespace Bankomat2._0
         {
             if (this.balance >= amount)
             {
-                // Maketransaction
+                decimal newBalance = balance - amount;
+                balance = newBalance;
+                // Sparar i loggen
                 Transaction newTA = new Transaction(balance);
                 newTA.Account = this.number;
                 newTA.Amount = amount;
@@ -28,6 +30,7 @@ namespace Bankomat2._0
             {
                 throw new Exception("Not enough money.");
             }
+            
             
         }
     }

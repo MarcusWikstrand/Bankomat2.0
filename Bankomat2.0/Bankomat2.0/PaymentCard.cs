@@ -22,5 +22,8 @@ namespace Bankomat2._0
                 throw new Exception("Three failed attemtps to Authenticate");
             }
         }
+        public Account connectedAccount { get; set; }
+
+        
     }
 }

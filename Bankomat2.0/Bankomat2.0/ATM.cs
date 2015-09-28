@@ -20,7 +20,7 @@ namespace Bankomat2._0
 
         // vilken bank?
         private Bank Bank;
-
+        
         //Vilket konto används för transaktionen
         public string SelectedCard { get; set; } //Tilldelas värdet via forms
 
@@ -31,11 +31,11 @@ namespace Bankomat2._0
         {
             withdrawalAmount = 0; //Kopplas till forms senare
             if (withdrawalAmount <= 2000)
-            {
-
-            }
+        {
+                Bank.ConductTransaction(SelectedCard, withdrawalAmount);
+        }
             else new Exception("Amount is too big for this machine");//Specificiera: ska ett konto kunna ta ut max 2000 per dygn eller per gång?
-
+            
         }
 
         public void RegisterEvent()
@@ -47,10 +47,10 @@ namespace Bankomat2._0
             try
             {
                 if (this.Bank.Authenticate(card, pin, ClientID))
-                {
+            {
                     SelectedCard = card;
-                    return true;
-                }
+                return true;
+            }
             }
             catch (Exception ex)
             {
