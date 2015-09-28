@@ -7,6 +7,10 @@ namespace Bankomat2._0
 {
     public class Bank
     {
+        public Bank()
+        {
+            paymentCards = new Dictionary<string, PaymentCard>();
+        }
         //Bank identification code
         private string Bic { get; set; }
         // Bank namn
@@ -17,7 +21,8 @@ namespace Bankomat2._0
         private int maxDailyWithdrawalAmount { get; set; }
         // log 
         private List<iEvent> eventLog { get; set; }
-
+        // 
+        private Dictionary<string, PaymentCard> paymentCards;
         public bool ConductTransaction()
         {
             return true;
@@ -31,6 +36,15 @@ namespace Bankomat2._0
         public void GetPerson(string SSN)
         {
             //SQL
+        }
+        public bool Authenticate(string card, string pin)
+        {
+            PaymentCard pc = paymentCards[card];
+            if (pc.pin == pin)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -7,12 +7,20 @@ namespace Bankomat2._0
 {
     public class ATM
     {
+        public ATM()
+        {
+            Bank = new Bank();
+
+        }
         //Bankomatens ID för event logg
-        public string SerialNumber { get; set; }
+        private string SerialNumber { get; set; }
 
         //Max uttag för just den här bankomaten
-        public int MaxWithdrawalAmount { get; set; }
-       
+        private const int MaxWithdrawalAmount = 5000;
+
+        // vilken bank?
+        private Bank Bank;
+        
         //Vilket konto används för transaktionen
         public string SelectedCard { get; set; } //Tilldelas värdet via forms
 
@@ -23,15 +31,24 @@ namespace Bankomat2._0
         {
             withdrawalAmount = 0; //Kopplas till forms senare
             if (withdrawalAmount <= 2000)
-            {
-
-            }
+        {
+            
+        }
             else new Exception("Amount is too big for this machine");//Specificiera: ska ett konto kunna ta ut max 2000 per dygn eller per gång?
             
         }
 
         public void RegisterEvent()
         {
+
+        }
+        private bool Authenticate(string card, string pin)
+        {
+            if (this.Bank.Authenticate(card, pin))
+            {
+                return true;
+            }
+            return false;
 
         }
     }
