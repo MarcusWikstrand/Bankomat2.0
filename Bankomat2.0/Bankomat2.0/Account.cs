@@ -12,6 +12,7 @@ namespace Bankomat2._0
         private List<Transaction> transactions { get; set; }
         private List<Customer> holders { get; set; }
         private List<PaymentCard> connectedCards { get; set; }
+
         public bool MakeTransaction(decimal amount)
         {
             if (this.balance >= amount)

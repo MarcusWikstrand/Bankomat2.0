@@ -12,18 +12,21 @@ namespace Bankomat2._0
 
         //Max uttag för just den här bankomaten
         public int MaxWithdrawalAmount { get; set; }
-
-        //Vem använder bankomaten
-        public string CurrentUser { get; set; }
-
+       
         //Vilket konto används för transaktionen
-        public string SelectedAccount { get; set; }
+        public string SelectedCard { get; set; } //Tilldelas värdet via forms
 
         //Lista med tilgängliga sedlar
         List<Banknote> currentlyAvailableBanknotes = new List<Banknote>();
 
-        public void Withdraw()
+        public void Withdraw(int withdrawalAmount)
         {
+            withdrawalAmount = 0; //Kopplas till forms senare
+            if (withdrawalAmount <= 2000)
+            {
+
+            }
+            else new Exception("Amount is too big for this machine");//Specificiera: ska ett konto kunna ta ut max 2000 per dygn eller per gång?
             
         }
 
