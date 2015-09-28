@@ -20,6 +20,8 @@ namespace Bankomat2._0
         private Dictionary<string, Account> Accounts { get; set; }
         // max cash withdrawal per day
         private int maxDailyWithdrawalAmount { get; set; }
+        //max cash withdrawal per time
+        private int maxSingleWithdrawalAmount { get; set; }
         // log 
         private List<iEvent> eventLog { get; set; }
         // 

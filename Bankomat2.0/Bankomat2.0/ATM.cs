@@ -12,30 +12,56 @@ namespace Bankomat2._0
             Bank = new Bank();
             ClientID = id;
         }
+
+        #region props
         //Bankomatens ID för event logg
-        private string ClientID { get;}
+        private string ClientID { get; }
 
         //Max uttag för just den här bankomaten
         private const int MaxWithdrawalAmount = 5000;
 
         // vilken bank?
         private Bank Bank;
-        
+
         //Vilket konto används för transaktionen
         public string SelectedCard { get; set; } //Tilldelas värdet via forms
 
         //Lista med tilgängliga sedlar
         List<Banknote> currentlyAvailableBanknotes = new List<Banknote>();
+        #endregion
 
         public void Withdraw(int withdrawalAmount)
         {
             withdrawalAmount = 0; //Kopplas till forms senare
-            if (withdrawalAmount <= 2000)
-        {
+
+            if (currentlyAvailableBanknotes != null)//om det finns pengar i bankomaten, bör förbättras
+            {
+                // Kontroll för orimliga uttag
+                if (CheckNotes() && withdrawalAmount < 100)
+                {
+                    new Exception("Invalid amount. Enter amount that is dividable by 100.");
+                }
+
                 Bank.ConductTransaction(SelectedCard, withdrawalAmount);
+            }
+            else
+            {
+                new Exception("There are no money in the machine");
+            }
         }
-            else new Exception("Amount is too big for this machine");//Specificiera: ska ett konto kunna ta ut max 2000 per dygn eller per gång?
-            
+
+        // Kollar om det finns 100 kr sedlar
+        public bool CheckNotes()
+        {
+            foreach (var note in currentlyAvailableBanknotes)
+            {
+                if (note.Denomination == 100)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void RegisterEvent()
@@ -48,10 +74,10 @@ namespace Bankomat2._0
             try
             {
                 if (this.Bank.Authenticate(card, pin, ClientID))
-            {
+                {
                     SelectedCard = card;
-                return true;
-            }
+                    return true;
+                }
             }
             catch (Exception)
             {

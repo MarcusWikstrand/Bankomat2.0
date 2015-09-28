@@ -20,7 +20,7 @@ namespace Bankomat2._0
                 decimal newBalance = Balance - amount;
                 Balance = newBalance;
                 // Sparar i loggen
-                Transaction newTA = new Transaction(Balance);
+                Transaction newTA = new Transaction(amount);
                 newTA.Account = this.number;
                 newTA.Amount = amount;
                 transactions.Add(newTA);
@@ -30,6 +30,16 @@ namespace Bankomat2._0
             {
                 throw new Exception("Not enough money.");
             }
+            
+        }
+
+        /// <summary>
+        /// Stored procedure i SQL, inte färdigt.
+        /// </summary>
+        private void CheckThisDayTransactions()
+        {
+
+            DateTime today = DateTime.Now.Date;
             
             
         }
