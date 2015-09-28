@@ -13,12 +13,21 @@ namespace Bankomat2._0
         public List<Customer> holders { get; set; }
         public bool MakeTransaction(decimal amount)
         {
-            // Maketransaction
-            Transaction newTA = new Transaction();
-            newTA.account = this.number;
-            newTA.amount = amount;
-            transactions.Add(newTA);
-            return true;
+            if (this.balance >= amount)
+            {
+                // Maketransaction
+                Transaction newTA = new Transaction();
+                newTA.account = this.number;
+                newTA.amount = amount;
+                transactions.Add(newTA);
+                return true;
+            }
+            else
+            {
+                // Oh you poor thing
+                return false;
+            }
+            
         }
     }
 }
