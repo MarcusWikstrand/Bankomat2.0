@@ -8,9 +8,9 @@ namespace Bankomat2._0
     public class Bank
     {
         //Bank identification code
-        string bic;
+        public string Bic { get; set; }
         // Bank namn
-        string name;
+        public string Name { get; set; }
 
         public void ConductTransaction()
         {

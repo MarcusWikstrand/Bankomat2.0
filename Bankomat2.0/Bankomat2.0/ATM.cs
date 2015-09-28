@@ -8,13 +8,16 @@ namespace Bankomat2._0
     public class ATM
     {
         //Bankomatens ID för event logg
-        string serialNumber;
+        public string SerialNumber { get; set; }
+
         //Max uttag för just den här bankomaten
-        int maxWithdrawalAmount;
+        public int MaxWithdrawalAmount { get; set; }
+
         //Vem använder bankomaten
-        string currentUser;
+        public string CurrentUser { get; set; }
+
         //Vilket konto används för transaktionen
-        string selectedAccount;
+        public string SelectedAccount { get; set; }
 
         //Lista med tilgängliga sedlar
         List<Banknote> currentlyAvailableBanknotes = new List<Banknote>();
