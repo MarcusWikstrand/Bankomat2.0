@@ -9,12 +9,15 @@ namespace Bankomat2._0
     {
         private int pin;
 
-        public Authentification (int pin)
+        public Authentification (int pin, string client, string description, bool outcome)
         {
             this.PIN = pin;
+            Client = client;
+            Description = description;
+            Outcome = outcome;
         }
 
-        public string client
+        public string Client
         {
             get
             {
@@ -27,7 +30,7 @@ namespace Bankomat2._0
             }
         }
 
-        public DateTime datum
+        public DateTime Time
         {
             get
             {
@@ -40,7 +43,7 @@ namespace Bankomat2._0
             }
         }
 
-        public string description
+        public string Description
         {
             get
             {
@@ -53,7 +56,7 @@ namespace Bankomat2._0
             }
         }
 
-        public bool outcome
+        public bool Outcome
         {
             get
             {

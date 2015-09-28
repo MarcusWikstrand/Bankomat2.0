@@ -8,9 +8,9 @@ namespace Bankomat2._0
 {
     public interface iEvent
     {
-        string client { get; set; }
-        string description { get; set; }
-        DateTime datum { get; set; }
-        bool outcome { get; set; }
+        string Client { get; set; }
+        string Description { get; set; }
+        DateTime Time { get; set; }
+        bool Outcome { get; set; }
     }
 }
