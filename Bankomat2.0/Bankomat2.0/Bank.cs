@@ -38,9 +38,9 @@ namespace Bankomat2._0
             return true;
         }
 
-        public void LogEvent(string clientID, int pin, PaymentCard card)
+        public void LogEvent(string clientID, int pin, PaymentCard card, bool outcome)
         {
-            Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök",  true );
+            Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök", outcome);
             eventLog.Add(auth);
         }
 
@@ -48,16 +48,19 @@ namespace Bankomat2._0
         {
             //SQL
         }
-        public bool Authenticate(string card, string pin, string clientID)
+
+        public bool Authenticate(string card, int pin, string clientID)
         {
             PaymentCard pc = paymentCards[card];
             if (pc.pin == pin)
             {
+                LogEvent(clientID, pin, pc, true);
                 return true;
             }
             else
             {
                 pc.RegisterFailedAuthAttempt();
+                LogEvent(clientID, pin, pc, false);
                 return false;
             }
 

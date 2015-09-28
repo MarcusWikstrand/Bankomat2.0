@@ -42,7 +42,7 @@ namespace Bankomat2._0
         {
 
         }
-        private bool Authenticate(string card, string pin)
+        private bool Authenticate(string card, int pin)
         {
             try
             {
