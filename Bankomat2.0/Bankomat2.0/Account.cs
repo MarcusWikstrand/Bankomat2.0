@@ -25,8 +25,7 @@ namespace Bankomat2._0
             }
             else
             {
-                // Oh you poor thing
-                return false;
+                throw new Exception("Not enough money.");
             }
             
         }
