@@ -14,7 +14,7 @@ namespace Bankomat2._0
 
         Dictionary<string, Account> accounts;
 
-        public List<Event> eventLog { get; set; }
+        public List<iEvent> eventLog { get; set; }
 
         public void ConductTransaction()
         {

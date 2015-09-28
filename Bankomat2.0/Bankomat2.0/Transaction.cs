@@ -21,6 +21,7 @@ namespace Bankomat2._0
             set { this.amount = value; }
         }
 
+        public string Account { get; set; }
 
         public DateTime datum
         {

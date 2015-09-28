@@ -16,9 +16,9 @@ namespace Bankomat2._0
             if (this.balance >= amount)
             {
                 // Maketransaction
-                Transaction newTA = new Transaction();
-                newTA.account = this.number;
-                newTA.amount = amount;
+                Transaction newTA = new Transaction(balance);
+                newTA.Account = this.number;
+                newTA.Amount = amount;
                 transactions.Add(newTA);
                 return true;
             }
