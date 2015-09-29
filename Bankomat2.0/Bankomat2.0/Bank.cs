@@ -9,11 +9,13 @@ namespace Bankomat2._0
     {
         private Dictionary<string, PaymentCard> paymentCards;
         private Dictionary<string, Customer> customers;
+        private Dictionary<string, Account> accounts;
 
         public Bank()
         {
             paymentCards = new Dictionary<string, PaymentCard>();
             customers = new Dictionary<string, Customer>();
+            Accounts = new Dictionary<string, Account>();
             SeedBankWithFakeData();
         }
 
@@ -26,7 +28,7 @@ namespace Bankomat2._0
         public bool ConductTransaction(string cardNumber, decimal amount, int clientId)
         {
             PaymentCard pc = paymentCards[cardNumber];
-            Account currentAccount = pc.connectedAccount;
+            Account currentAccount = pc.ConnectedAccount;
             currentAccount.MakeTransaction(amount);
             return true;
         }
@@ -60,6 +62,13 @@ namespace Bankomat2._0
             Account a = Accounts[number];
             Decimal balance = a.Balance;
             return balance;
+        }
+
+        public decimal GetConnectedAccountBalance(string cardNumber, int clientId)
+        {
+            PaymentCard pc = paymentCards[cardNumber];
+            Account a = pc.ConnectedAccount;
+            return a.Balance;
         }
 
         private void SeedBankWithFakeData()

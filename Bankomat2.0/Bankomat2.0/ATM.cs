@@ -29,7 +29,7 @@ namespace Bankomat2._0
 
             if (ValidateWithdrawalAmount(withdrawalAmount) == false)
             {
-                throw new Exception("Invalid amount.");
+                throw new Exception("Ogiltigt Belopp");
             }
 
             ReservBanknotes(withdrawalAmount);
@@ -78,7 +78,7 @@ namespace Bankomat2._0
                     for (int i = 0; i <= numOfThisDenomination; i++)
                     {
                         // Moves the needed banknotes from the currently available banknotes to the list of reserved banknotes.
-                        Banknote bn = (from banknote in currentlyAvailableBanknotes where banknote.Denomination == denomination select banknote).First();
+                        Banknote bn = (from banknote in currentlyAvailableBanknotes where banknote.Denomination == denomination select banknote).FirstOrDefault();
 
                         // If there is an available banknote of the denomination we move it to reserved banknotes.
                         if (bn != null)
@@ -113,7 +113,7 @@ namespace Bankomat2._0
 
         private List<int> AvailableDenominations()
         {
-            List<int> denominations = (from banknote in currentlyAvailableBanknotes select banknote.Denomination).Distinct() as List<int>;
+            List<int> denominations = (from banknote in currentlyAvailableBanknotes select banknote.Denomination).Distinct().ToList();
             return denominations;
         }
 
@@ -148,6 +148,11 @@ namespace Bankomat2._0
         public decimal ViewBalance(string accountNumber)
         {
             return bank.GetBalance(accountNumber, clientId);
+        }
+
+        public decimal ViewConnectedAccountBalance()
+        {
+            return bank.GetConnectedAccountBalance(SelectedCardNumber, clientId);
         }
 
         private void SeedAtmWithFakeMoney()

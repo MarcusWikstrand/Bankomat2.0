@@ -30,8 +30,6 @@ namespace Bankomat2._0
             }
         }
 
-        public Account connectedAccount { get; set; }
-
         public bool IsActive()
         {
             return active;
@@ -48,7 +46,7 @@ namespace Bankomat2._0
 
         public Customer Holder { get; set; }
 
-        public Account ConnectedAccount { get; }
+        public Account ConnectedAccount { get; private set; }
 
         #endregion
     }
