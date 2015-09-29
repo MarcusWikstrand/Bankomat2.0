@@ -22,7 +22,7 @@ namespace Bankomat2._0
 
         public void Withdraw(int withdrawalAmount)
         {
-            if (!BanknotesAvailable())
+            if (!BanknotesIsAvailable())
             {
                 throw new Exception("No banknotes availabale in the ATM.");
             }
@@ -32,7 +32,7 @@ namespace Bankomat2._0
                 throw new Exception("Invalid amount.");
             }
 
-            ReservNeededBanknotes(withdrawalAmount);
+            ReservBanknotes(withdrawalAmount);
             bank.ConductTransaction(SelectedCardNumber, withdrawalAmount, clientId);
         }
 
@@ -57,7 +57,7 @@ namespace Bankomat2._0
             return valid;
         }
 
-        private List<Banknote> ReservNeededBanknotes(int amount)
+        private List<Banknote> ReservBanknotes(int amount)
         {
             List<Banknote> reservedBanknotes = new List<Banknote>();
 
@@ -106,7 +106,7 @@ namespace Bankomat2._0
             return reservedBanknotes;
         }
 
-        public bool BanknotesAvailable()
+        public bool BanknotesIsAvailable()
         {
             return (currentlyAvailableBanknotes.Count > 0) ? true : false;
         }

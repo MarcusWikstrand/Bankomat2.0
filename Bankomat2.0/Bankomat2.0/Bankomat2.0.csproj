@@ -83,7 +83,6 @@
     <Compile Include="ATM.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Banknote.cs" />
-    <Compile Include="AtmTester.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
