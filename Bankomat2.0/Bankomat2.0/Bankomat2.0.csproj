@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\Logo.jpeg.jpg" />
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
     <None Include="Web.Debug.config">
