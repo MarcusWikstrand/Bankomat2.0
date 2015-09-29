@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Bankomat2._0
 {
-    public class Transaction : iEvent
+    public class Transaction
     {
         private Account account;
 

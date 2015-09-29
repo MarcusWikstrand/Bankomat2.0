@@ -23,7 +23,7 @@ namespace Bankomat2._0
         /// <param name="cardNumber"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public bool ConductTransaction(string cardNumber, decimal amount)
+        public bool ConductTransaction(string cardNumber, decimal amount, int clientId)
         {
             PaymentCard pc = paymentCards[cardNumber];
             Account currentAccount = pc.connectedAccount;
@@ -36,13 +36,11 @@ namespace Bankomat2._0
             PaymentCard pc = paymentCards[card];
             if (pc.Pin == pin)
             {
-                LogEvent(clientID, pin, pc, true);
                 return true;
             }
             else
             {
                 pc.RegisterFailedAuthAttempt();
-                LogEvent(clientID, pin, pc, false);
                 return false;
             }
 
@@ -61,21 +59,7 @@ namespace Bankomat2._0
         {
             Account a = Accounts[number];
             Decimal balance = a.Balance;
-            LogEvent(clientId, number, balance);
-
-
             return balance;
-        }
-
-        private void LogEvent(int clientID, int pin, PaymentCard card, bool outcome)
-        {
-            Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök", outcome);
-            EventLog.Add(auth);
-        }
-
-        private void LogEvent(int clientId, string accountNumber, Decimal balance)
-        {
-            ViewBalance vb = new ViewBalance(clientId, accountNumber, "Viewed the specified account balance.", balance, true);
         }
 
         private void SeedBankWithFakeData()
@@ -86,6 +70,11 @@ namespace Bankomat2._0
             Customer c3 = new Customer("199017177777", "Li", "Lisson");
             Customer c4 = new Customer("199017176666", "Dan", "Dansson");
             Customer c5 = new Customer("199017175555", "Pelle", "Pettersson");
+            customers.Add(c1.Ssn, c1);
+            customers.Add(c2.Ssn, c2);
+            customers.Add(c3.Ssn, c3);
+            customers.Add(c4.Ssn, c4);
+            customers.Add(c5.Ssn, c5);
 
             // Accounts 
             Account a1 = new Account("51425555555", c1);
@@ -93,6 +82,11 @@ namespace Bankomat2._0
             Account a3 = new Account("51427777777", c3);
             Account a4 = new Account("51428888888", c4);
             Account a5 = new Account("51429999999", c5);
+            Accounts.Add(a1.Number, a1);
+            Accounts.Add(a2.Number, a2);
+            Accounts.Add(a3.Number, a3);
+            Accounts.Add(a4.Number, a4);
+            Accounts.Add(a5.Number, a5);
 
             // transactions 
             a1.MakeTransaction(-1000);
@@ -115,7 +109,11 @@ namespace Bankomat2._0
             PaymentCard p3 = new PaymentCard(3333, 00000000, "51427777777", c3, a3);
             PaymentCard p4 = new PaymentCard(4444, 00000000, "51428888888", c4, a4);
             PaymentCard p5 = new PaymentCard(5555, 00000000, "51429999999", c5, a5);
-
+            paymentCards.Add(p1.Pan, p1);
+            paymentCards.Add(p2.Pan, p2);
+            paymentCards.Add(p3.Pan, p3);
+            paymentCards.Add(p4.Pan, p4);
+            paymentCards.Add(p5.Pan, p5);
 
         }
 
@@ -135,9 +133,6 @@ namespace Bankomat2._0
 
         //max cash withdrawal per time
         private int MaxSingleWithdrawalAmount { get; set; }
-
-        // log 
-        private List<iEvent> EventLog { get; set; }
 
         #endregion
     }

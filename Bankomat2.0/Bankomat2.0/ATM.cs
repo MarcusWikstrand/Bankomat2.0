@@ -22,34 +22,99 @@ namespace Bankomat2._0
 
         public void Withdraw(int withdrawalAmount)
         {
-            if (currentlyAvailableBanknotes != null)//om det finns pengar i bankomaten, bör förbättras
+            if (!BanknotesIsAvailable())
             {
-                // Kontroll för orimliga uttag
-                if (CheckNotes() && withdrawalAmount < 100)
-                {
-                    throw new Exception("Invalid amount. Enter amount that is dividable by 100.");
-                }
+                throw new Exception("No banknotes availabale in the ATM.");
+            }
 
-                bank.ConductTransaction(SelectedCardNumber, withdrawalAmount);
-            }
-            else
+            if (ValidateWithdrawalAmount(withdrawalAmount) == false)
             {
-                throw new Exception("There are no money in the machine");
+                throw new Exception("Invalid amount.");
             }
+
+            ReservBanknotes(withdrawalAmount);
+            bank.ConductTransaction(SelectedCardNumber, withdrawalAmount, clientId);
         }
 
-        // Kollar om det finns 100 kr sedlar
-        private bool CheckNotes()
+        private bool ValidateWithdrawalAmount(int withdrawalAmount)
         {
-            foreach (var note in currentlyAvailableBanknotes)
+            bool valid = true;
+
+            // Check if the withdrawal amount is evenly devisible with the currently available denominations.
+            foreach (int denomination in AvailableDenominations())
             {
-                if (note.Denomination == 100)
+                if ((withdrawalAmount % denomination) == 0)
                 {
-                    return true;
+                    valid = true;
+                    break;
+                }
+                else
+                {
+                    valid = false;
                 }
             }
 
-            return false;
+            return valid;
+        }
+
+        private List<Banknote> ReservBanknotes(int amount)
+        {
+            List<Banknote> reservedBanknotes = new List<Banknote>();
+
+            // Gets the available denominations and sort them by size, biggest first.
+            List<int> denominationsOrdered = AvailableDenominations();
+            denominationsOrdered.Sort();
+            denominationsOrdered.Reverse();
+
+            // Check how many of each dnomination that is nedded and add them to the list of needed banknotes.
+            int remainingAmount = amount;
+
+            foreach (int denomination in denominationsOrdered)
+            {
+                if ((remainingAmount / denomination) > 0)
+                {
+                    int numOfThisDenomination = remainingAmount / denomination;
+
+                    for (int i = 0; i <= numOfThisDenomination; i++)
+                    {
+                        // Moves the needed banknotes from the currently available banknotes to the list of reserved banknotes.
+                        Banknote bn = (from banknote in currentlyAvailableBanknotes where banknote.Denomination == denomination select banknote).First();
+
+                        // If there is an available banknote of the denomination we move it to reserved banknotes.
+                        if (bn != null)
+                        {
+                            reservedBanknotes.Add(bn);
+                            currentlyAvailableBanknotes.Remove(bn);
+                        } else
+                        {
+                            numOfThisDenomination--;
+                        }
+                        
+                    }
+
+                    remainingAmount -= (numOfThisDenomination * denomination);
+                }
+            }
+
+            // If the available banknotes does not cover the full amount we throw an exception.
+            if (remainingAmount > 0)
+            {
+                currentlyAvailableBanknotes.AddRange(reservedBanknotes);
+                throw new Exception(@"Not enough banknotes in the ATM.");
+            } 
+
+            return reservedBanknotes;
+        }
+
+        public bool BanknotesIsAvailable()
+        {
+            return (currentlyAvailableBanknotes.Count > 0) ? true : false;
+        }
+
+        private List<int> AvailableDenominations()
+        {
+            List<int> denominations = (from banknote in currentlyAvailableBanknotes select banknote.Denomination).Distinct() as List<int>;
+            return denominations;
         }
 
         public bool Authenticate(string cardNumber, int pin)
@@ -62,6 +127,9 @@ namespace Bankomat2._0
                 {
                     SelectedCardNumber = cardNumber;
                     authResult = true;
+                } else
+                {
+                    throw new Exception("Incorrect pin");
                 }
             }
             catch (Exception)
@@ -77,10 +145,6 @@ namespace Bankomat2._0
             return bank.GetHolderAccounts(SelectedCardNumber);
         }
 
-        public decimal ViewBalance()
-        {
-            return bank.GetBalance(SelectedCardNumber, clientId);
-        }
         public decimal ViewBalance(string accountNumber)
         {
             return bank.GetBalance(accountNumber, clientId);
@@ -105,7 +169,7 @@ namespace Bankomat2._0
 
         #region props
 
-            private string SelectedCardNumber { get; set; } //Tilldelas värdet via forms
+        private string SelectedCardNumber { get; set; } //Tilldelas värdet via forms
 
         #endregion
     }
