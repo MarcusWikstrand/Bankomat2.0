@@ -33,7 +33,7 @@ namespace Bankomat2._0
             }
 
             ReservNeededBanknotes(withdrawalAmount);
-            bank.ConductTransaction(SelectedCardNumber, withdrawalAmount);
+            bank.ConductTransaction(SelectedCardNumber, withdrawalAmount, clientId);
         }
 
         private bool ValidateWithdrawalAmount(int withdrawalAmount)
@@ -143,11 +143,6 @@ namespace Bankomat2._0
         public List<string> GetHolderAccounts()
         {
             return bank.GetHolderAccounts(SelectedCardNumber);
-        }
-
-        public decimal ViewBalance()
-        {
-            return bank.GetBalance(SelectedCardNumber, clientId);
         }
 
         public decimal ViewBalance(string accountNumber)

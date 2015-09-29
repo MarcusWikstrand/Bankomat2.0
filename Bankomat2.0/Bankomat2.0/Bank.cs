@@ -59,9 +59,6 @@ namespace Bankomat2._0
         {
             Account a = Accounts[number];
             Decimal balance = a.Balance;
-            LogEvent(clientId, number, balance);
-
-
             return balance;
         }
 
@@ -122,9 +119,6 @@ namespace Bankomat2._0
 
         //max cash withdrawal per time
         private int MaxSingleWithdrawalAmount { get; set; }
-
-        // log 
-        private List<iEvent> EventLog { get; set; }
 
         #endregion
     }
