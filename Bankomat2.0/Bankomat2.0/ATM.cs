@@ -24,7 +24,7 @@ namespace Bankomat2._0
         {
             if (!BanknotesIsAvailable())
             {
-                throw new Exception("No banknotes availabale in the ATM.");
+                throw new Exception("Tekniskt fel (dvs. Pengarna är slut (dont panic))");
             }
 
             if (ValidateWithdrawalAmount(withdrawalAmount) == false)
@@ -52,6 +52,12 @@ namespace Bankomat2._0
                 {
                     valid = false;
                 }
+            }
+
+            // Check that the amount is positive
+            if (withdrawalAmount <= 0)
+            {
+                valid = false;
             }
 
             return valid;
@@ -100,7 +106,7 @@ namespace Bankomat2._0
             if (remainingAmount > 0)
             {
                 currentlyAvailableBanknotes.AddRange(reservedBanknotes);
-                throw new Exception(@"Not enough banknotes in the ATM.");
+                throw new Exception(@"Tekniskt fel (dvs. inte tillräckligt med pengar i maskinen (don't panic))");
             } 
 
             return reservedBanknotes;

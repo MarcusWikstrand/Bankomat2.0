@@ -26,7 +26,7 @@ namespace Tester
             {
                 try
                 {
-                    int amount = 8000;
+                    int amount = -300;
                     Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
                     Console.WriteLine($"Trying to withdraw {amount}:-");
                     atm.Withdraw(amount);
