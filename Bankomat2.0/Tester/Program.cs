@@ -24,8 +24,19 @@ namespace Tester
 
             if (authResult == true)
             {
-                Console.WriteLine("Trying to withdraw 100:-");
-                atm.Withdraw(100);
+                try
+                {
+                    int amount = -300;
+                    Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
+                    Console.WriteLine($"Trying to withdraw {amount}:-");
+                    atm.Withdraw(amount);
+                    Console.WriteLine($"Balance after transaction " + atm.ViewConnectedAccountBalance());
+            }
+                catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             }
 
             atm.getFiveLatestTransactions("51425555555");

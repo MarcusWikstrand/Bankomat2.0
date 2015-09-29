@@ -66,6 +66,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\Logo.jpeg.jpg" />
+    <Content Include="BankomatStyle.css" />
+    <Content Include="LoginPage.aspx" />
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
     <None Include="Web.Debug.config">
@@ -87,6 +90,13 @@
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaymentCard.cs" />
     <Compile Include="Customer.cs" />
