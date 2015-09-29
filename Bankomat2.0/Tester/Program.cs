@@ -27,6 +27,8 @@ namespace Tester
                 Console.WriteLine("Trying to withdraw 100:-");
                 atm.Withdraw(100);
             }
+
+            atm.getFiveLatestTransactions("51425555555");
         }
     }
 }
