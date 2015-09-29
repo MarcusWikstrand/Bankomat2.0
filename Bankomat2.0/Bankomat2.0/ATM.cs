@@ -24,12 +24,12 @@ namespace Bankomat2._0
         {
             if (!BanknotesIsAvailable())
             {
-                throw new Exception("No banknotes availabale in the ATM.");
+                throw new Exception("Tekniskt fel (dvs. Pengarna är slut (dont panic))");
             }
 
             if (ValidateWithdrawalAmount(withdrawalAmount) == false)
             {
-                throw new Exception("Invalid amount.");
+                throw new Exception("Ogiltigt Belopp");
             }
 
             ReservBanknotes(withdrawalAmount);
@@ -52,6 +52,12 @@ namespace Bankomat2._0
                 {
                     valid = false;
                 }
+            }
+
+            // Check that the amount is positive
+            if (withdrawalAmount <= 0)
+            {
+                valid = false;
             }
 
             return valid;
@@ -78,7 +84,7 @@ namespace Bankomat2._0
                     for (int i = 0; i <= numOfThisDenomination; i++)
                     {
                         // Moves the needed banknotes from the currently available banknotes to the list of reserved banknotes.
-                        Banknote bn = (from banknote in currentlyAvailableBanknotes where banknote.Denomination == denomination select banknote).First();
+                        Banknote bn = (from banknote in currentlyAvailableBanknotes where banknote.Denomination == denomination select banknote).FirstOrDefault();
 
                         // If there is an available banknote of the denomination we move it to reserved banknotes.
                         if (bn != null)
@@ -100,7 +106,7 @@ namespace Bankomat2._0
             if (remainingAmount > 0)
             {
                 currentlyAvailableBanknotes.AddRange(reservedBanknotes);
-                throw new Exception(@"Not enough banknotes in the ATM.");
+                throw new Exception(@"Tekniskt fel (dvs. inte tillräckligt med pengar i maskinen (don't panic))");
             } 
 
             return reservedBanknotes;
@@ -113,7 +119,7 @@ namespace Bankomat2._0
 
         private List<int> AvailableDenominations()
         {
-            List<int> denominations = (from banknote in currentlyAvailableBanknotes select banknote.Denomination).Distinct() as List<int>;
+            List<int> denominations = (from banknote in currentlyAvailableBanknotes select banknote.Denomination).Distinct().ToList();
             return denominations;
         }
 
@@ -148,6 +154,11 @@ namespace Bankomat2._0
         public decimal ViewBalance(string accountNumber)
         {
             return bank.GetBalance(accountNumber, clientId);
+        }
+
+        public decimal ViewConnectedAccountBalance()
+        {
+            return bank.GetConnectedAccountBalance(SelectedCardNumber, clientId);
         }
 
         private void SeedAtmWithFakeMoney()

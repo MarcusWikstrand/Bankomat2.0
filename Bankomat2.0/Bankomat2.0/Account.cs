@@ -33,7 +33,7 @@ namespace Bankomat2._0
             }
             else
             {
-                throw new Exception("Not enough money.");
+                throw new Exception("Otillräkliga tillgångar på kontot.");
             }
             
         }
