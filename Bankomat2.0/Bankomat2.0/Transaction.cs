@@ -7,30 +7,32 @@ namespace Bankomat2._0
 {
     public class Transaction : iEvent
     {
+        private Account account;
 
-        private decimal amount;
-
-        public Transaction (decimal amount)
+        public Transaction(decimal amount, Account account)
         {
-            this.Amount = amount;
-        } 
+            Amount = amount;
+            this.account = account;
+        }
 
         public decimal Amount
         {
-            get { return this.amount; }
-            set { this.amount = value; }
+            get;
+            private set;
         }
 
-        public string Account { get; set; }
-
-        public string Client
+        public string Account
         {
             get
             {
-                throw new NotImplementedException();
+                return account.Number;
             }
+            private set{}
+        }
 
-            set
+        public int Client
+        {
+            get
             {
                 throw new NotImplementedException();
             }
@@ -42,11 +44,6 @@ namespace Bankomat2._0
             {
                 throw new NotImplementedException();
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public string Description
@@ -55,21 +52,11 @@ namespace Bankomat2._0
             {
                 throw new NotImplementedException();
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public bool Outcome
         {
             get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
             {
                 throw new NotImplementedException();
             }

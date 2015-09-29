@@ -9,7 +9,7 @@ namespace Bankomat2._0
     {
         private int pin;
 
-        public Authentification (int pin, string client, string description, bool outcome)
+        public Authentification (int pin, int client, string description, bool outcome)
         {
             this.PIN = pin;
             Client = client;
@@ -17,7 +17,7 @@ namespace Bankomat2._0
             Outcome = outcome;
         }
 
-        public string Client
+        public int Client
         {
             get
             {

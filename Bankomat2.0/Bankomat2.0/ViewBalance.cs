@@ -10,7 +10,7 @@ namespace Bankomat2._0
         private string account;
         private decimal balance;
 
-        public ViewBalance(string client, string account, string description, decimal balance, bool outcome)
+        public ViewBalance(int client, string account, string description, decimal balance, bool outcome)
         {
             Client = client;
             Account = account;
@@ -21,37 +21,34 @@ namespace Bankomat2._0
 
         public string Account
         {
-            get { return this.account; }
-            set { this.account = value; }
+            get { return account; }
+            private set
+            {
+                account = value;
+            }
         }
 
         public decimal Balance
         {
             get { return this.balance; }
-            set { this.balance = value; }
+            private set
+            {
+                balance = value;
+            }
         }
 
-        public string Client
+        public int Client
         {
             get
             {
                 throw new NotImplementedException();
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            private set {}
         }
 
         public DateTime Time
         {
             get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
             {
                 throw new NotImplementedException();
             }
@@ -63,11 +60,7 @@ namespace Bankomat2._0
             {
                 throw new NotImplementedException();
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            private set{}
         }
 
         public bool Outcome
@@ -76,11 +69,7 @@ namespace Bankomat2._0
             {
                 throw new NotImplementedException();
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            private set {}
         }
     }
 }

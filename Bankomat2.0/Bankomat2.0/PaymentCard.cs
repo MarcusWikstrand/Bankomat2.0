@@ -7,16 +7,16 @@ namespace Bankomat2._0
 {
     public class PaymentCard
     {
-        public int pin { get; set; }
-        public int iin { get; set; }
-        public int pan { get; set; }
-        public Customer holder { get; set; }
-        public Dictionary<int, Account>  connectedAccounts { get; set; }
         private int failedAuthenticationAttempts;
         private bool active;
 
-        public PaymentCard()
+        public PaymentCard(int pin, int iin, string pan, Customer holder, Account account)
         {
+            Pin = pin;
+            Iin = iin;
+            Pan = pan;
+            Holder = holder;
+            ConnectedAccount = account;
             active = true;
         }
 
@@ -29,11 +29,27 @@ namespace Bankomat2._0
                 throw new Exception("Three failed attemtps to Authenticate");
             }
         }
+
         public Account connectedAccount { get; set; }
 
         public bool IsActive()
         {
             return active;
         }
+
+
+        #region props
+
+        public int Pin { get;}
+
+        public int Iin { get;}
+
+        public string Pan { get; }
+
+        public Customer Holder { get; set; }
+
+        public Account ConnectedAccount { get; }
+
+        #endregion
     }
 }
