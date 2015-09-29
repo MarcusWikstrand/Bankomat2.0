@@ -23,7 +23,7 @@ namespace Bankomat2._0
         /// <param name="cardNumber"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public bool ConductTransaction(string cardNumber, decimal amount)
+        public bool ConductTransaction(string cardNumber, decimal amount, int clientId)
         {
             PaymentCard pc = paymentCards[cardNumber];
             Account currentAccount = pc.connectedAccount;
@@ -36,13 +36,11 @@ namespace Bankomat2._0
             PaymentCard pc = paymentCards[card];
             if (pc.Pin == pin)
             {
-                LogEvent(clientID, pin, pc, true);
                 return true;
             }
             else
             {
                 pc.RegisterFailedAuthAttempt();
-                LogEvent(clientID, pin, pc, false);
                 return false;
             }
 
@@ -65,17 +63,6 @@ namespace Bankomat2._0
 
 
             return balance;
-        }
-
-        private void LogEvent(int clientID, int pin, PaymentCard card, bool outcome)
-        {
-            Authentification auth = new Authentification(pin, clientID, "Inloggningsförsök", outcome);
-            EventLog.Add(auth);
-        }
-
-        private void LogEvent(int clientId, string accountNumber, Decimal balance)
-        {
-            ViewBalance vb = new ViewBalance(clientId, accountNumber, "Viewed the specified account balance.", balance, true);
         }
 
         private void SeedBankWithFakeData()
