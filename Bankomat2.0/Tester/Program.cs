@@ -37,7 +37,9 @@ namespace Tester
                 Console.WriteLine(ex.Message);
             }
 
-        }
+            }
+
+            atm.getFiveLatestTransactions("51425555555");
         }
     }
 }

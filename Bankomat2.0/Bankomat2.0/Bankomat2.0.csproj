@@ -71,6 +71,8 @@
     <Content Include="LoginPage.aspx" />
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
+    <Content Include="SaldoPage.aspx" />
+    <Content Include="WelcomePage.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,7 +110,21 @@
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
+    <Compile Include="SaldoPage.aspx.cs">
+      <DependentUpon>SaldoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SaldoPage.aspx.designer.cs">
+      <DependentUpon>SaldoPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Transaction.cs" />
+    <Compile Include="WelcomePage.aspx.cs">
+      <DependentUpon>WelcomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WelcomePage.aspx.designer.cs">
+      <DependentUpon>WelcomePage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
