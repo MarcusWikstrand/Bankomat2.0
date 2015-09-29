@@ -14,6 +14,7 @@ namespace Bankomat2._0
         {
             paymentCards = new Dictionary<string, PaymentCard>();
             customers = new Dictionary<string, Customer>();
+            SeedBankWithFakeData();
         }
 
         /// <summary>
@@ -58,15 +59,10 @@ namespace Bankomat2._0
 
         public decimal GetBalance(string number, int clientId)
         {
-            if (number.Length > 10)
-            {
-                 
-            } else 
-            {
-                Account a = Accounts[number];
-                Decimal balance = a.Balance;
-                LogEvent(clientId, number, balance);
-            }
+            Account a = Accounts[number];
+            Decimal balance = a.Balance;
+            LogEvent(clientId, number, balance);
+
 
             return balance;
         }
@@ -120,7 +116,7 @@ namespace Bankomat2._0
             PaymentCard p4 = new PaymentCard(4444, 00000000, "51428888888", c4, a4);
             PaymentCard p5 = new PaymentCard(5555, 00000000, "51429999999", c5, a5);
 
-            
+
         }
 
         #region props
@@ -128,20 +124,20 @@ namespace Bankomat2._0
         //Bank identification code
         private string Bic { get; set; }
 
-            // Bank namn
-            private string Name { get; set; }
+        // Bank namn
+        private string Name { get; set; }
 
-            // Account list
-            private Dictionary<string, Account> Accounts { get; set; }
+        // Account list
+        private Dictionary<string, Account> Accounts { get; set; }
 
-            // max cash withdrawal per day
-            private int MaxDailyWithdrawalAmount { get; set; }
+        // max cash withdrawal per day
+        private int MaxDailyWithdrawalAmount { get; set; }
 
-            //max cash withdrawal per time
-            private int MaxSingleWithdrawalAmount { get; set; }
+        //max cash withdrawal per time
+        private int MaxSingleWithdrawalAmount { get; set; }
 
-            // log 
-            private List<iEvent> EventLog { get; set; }
+        // log 
+        private List<iEvent> EventLog { get; set; }
 
         #endregion
     }
