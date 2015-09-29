@@ -12,7 +12,6 @@ namespace Bankomat2._0
             Denomination = denomination;
         }
 
-        //GLÖM INTE ATT TA BORT serialNumber från UML!
         //Sedeltyp (100 eller 500 kronor)
         public int Denomination { get; private set; }
     }
