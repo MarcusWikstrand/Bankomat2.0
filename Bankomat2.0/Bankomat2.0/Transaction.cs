@@ -32,34 +32,23 @@ namespace Bankomat2._0
 
         public int Client
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get;
         }
 
         public DateTime Time
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            
         }
 
         public string Description
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get;
         }
 
         public bool Outcome
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get;
         }
 
         //Override method to ensure that a method to return the five latest transactions can work.

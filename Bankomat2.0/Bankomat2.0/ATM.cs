@@ -178,9 +178,9 @@ namespace Bankomat2._0
             }
         }
         ////Display the five latest transactions to take place within this specific account.
-        public void getFiveLatestTransactions(string accountNumber)
+        public List<String> getFiveLatestTransactions(string accountNumber)
         {
-            bank.GetLatestFiveTransactions(accountNumber, clientId);
+            return bank.GetLatestFiveTransactions(accountNumber, clientId);
         }
 
         #region props
