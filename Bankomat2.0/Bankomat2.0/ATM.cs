@@ -177,6 +177,11 @@ namespace Bankomat2._0
                 currentlyAvailableBanknotes.Add(bn);
             }
         }
+        ////Display the five latest transactions to take place within this specific account.
+        public void getFiveLatestTransactions(string accountNumber)
+        {
+            bank.GetLatestFiveTransactions(accountNumber, clientId);
+        }
 
         #region props
 

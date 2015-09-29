@@ -125,10 +125,17 @@ namespace Bankomat2._0
             paymentCards.Add("0000000051429999999", p5);
 
         }
+        //Display the five latest events to take place within this specific account.
+        public List<String> GetLatestFiveTransactions(string accountNumber, int clientID)
+        {
+            Account currentAccount = Accounts[accountNumber];
+            return currentAccount.latestFiveTransactions();
+
+        }
 
         #region props
 
-        //Bank identification code
+            //Bank identification code
         private string Bic { get; set; }
 
         // Bank namn

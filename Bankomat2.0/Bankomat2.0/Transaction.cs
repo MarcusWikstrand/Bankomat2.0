@@ -61,5 +61,11 @@ namespace Bankomat2._0
                 throw new NotImplementedException();
             }
         }
+
+        //Override method to ensure that a method to return the five latest transactions can work.
+        public override string ToString()
+        {
+            return Amount + Account + Client + Time + Description + Outcome;
+        }
     }
 }
