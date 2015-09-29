@@ -17,6 +17,7 @@ namespace Bankomat2._0
             bank = new Bank();
             clientId = id;
             currentlyAvailableBanknotes = new List<Banknote>();
+            SeedAtmWithFakeMoney();
         }
 
         public void Withdraw(int withdrawalAmount)
