@@ -10,11 +10,10 @@ namespace Bankomat2._0
         private int failedAuthenticationAttempts;
         private bool active;
 
-        public PaymentCard(int pin, int iin, string pan, Customer holder, Account account)
+        public PaymentCard(int pin, string cardNumber, Customer holder, Account account)
         {
+            CardNumber = cardNumber;
             Pin = pin;
-            Iin = iin;
-            Pan = pan;
             Holder = holder;
             ConnectedAccount = account;
             active = true;
@@ -38,11 +37,9 @@ namespace Bankomat2._0
 
         #region props
 
+        public string CardNumber { get; set; }
+
         public int Pin { get;}
-
-        public int Iin { get;}
-
-        public string Pan { get; }
 
         public Customer Holder { get; set; }
 

@@ -113,16 +113,16 @@ namespace Bankomat2._0
 
 
             // Payment cards
-            PaymentCard p1 = new PaymentCard(1111, 00000000, "51425555555", c1, a1);
-            PaymentCard p2 = new PaymentCard(2222, 00000000, "51426666666", c2, a2);
-            PaymentCard p3 = new PaymentCard(3333, 00000000, "51427777777", c3, a3);
-            PaymentCard p4 = new PaymentCard(4444, 00000000, "51428888888", c4, a4);
-            PaymentCard p5 = new PaymentCard(5555, 00000000, "51429999999", c5, a5);
-            paymentCards.Add(p1.Pan, p1);
-            paymentCards.Add(p2.Pan, p2);
-            paymentCards.Add(p3.Pan, p3);
-            paymentCards.Add(p4.Pan, p4);
-            paymentCards.Add(p5.Pan, p5);
+            PaymentCard p1 = new PaymentCard(1111, "0000000051425555555", c1, a1);
+            PaymentCard p2 = new PaymentCard(2222, "0000000051426666666", c2, a2);
+            PaymentCard p3 = new PaymentCard(3333, "0000000051427777777", c3, a3);
+            PaymentCard p4 = new PaymentCard(4444, "0000000051428888888", c4, a4);
+            PaymentCard p5 = new PaymentCard(5555, "0000000051429999999", c5, a5);
+            paymentCards.Add("0000000051425555555", p1);
+            paymentCards.Add("0000000051426666666", p2);
+            paymentCards.Add("0000000051427777777", p3);
+            paymentCards.Add("0000000051428888888", p4);
+            paymentCards.Add("0000000051429999999", p5);
 
         }
 
