@@ -66,13 +66,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\100 kronor ny sedel 1.jpg" />
+    <Content Include="images\500 kronor ny sedel 1.jpg" />
     <Content Include="images\Logo.jpeg.jpg" />
     <Content Include="BankomatStyle.css" />
     <Content Include="LoginPage.aspx" />
+    <Content Include="MainMenu.aspx" />
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
     <Content Include="SaldoPage.aspx" />
     <Content Include="WelcomePage.aspx" />
+    <Content Include="WithdrawalPage.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -100,6 +104,13 @@
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MainMenu.aspx.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMenu.aspx.designer.cs">
+      <DependentUpon>MainMenu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaymentCard.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +135,13 @@
     </Compile>
     <Compile Include="WelcomePage.aspx.designer.cs">
       <DependentUpon>WelcomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WithdrawalPage.aspx.cs">
+      <DependentUpon>WithdrawalPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WithdrawalPage.aspx.designer.cs">
+      <DependentUpon>WithdrawalPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
