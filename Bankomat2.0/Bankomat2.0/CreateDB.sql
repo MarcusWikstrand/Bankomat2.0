@@ -285,6 +285,7 @@ begin
 		DECLARE @Client int
 		DECLARE @pc varchar(5)
 		DECLARE @Bank varchar(8)
+		
 
 		SELECT @tranId=TransactionId, @Client=Client, @pc=PaymentCard, @Bank=Bank, @Amount=Amount, @TransactionTime=TransactionTime FROM AccountTransaction WHERE Account = @Account;
 
