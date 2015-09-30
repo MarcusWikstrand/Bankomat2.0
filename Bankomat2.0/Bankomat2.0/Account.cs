@@ -9,14 +9,12 @@ namespace Bankomat2._0
     {
         private List<Transaction> transactions;
         private List<Customer> holders;
-        private List<PaymentCard> connectedCards;
         private string TypeName;
 
         public Account(string number, Customer holder)
         {
             transactions = new List<Transaction>();
             holders = new List<Customer>();
-            connectedCards = new List<PaymentCard>();
             Number = number;
             holders.Add(holder);
             SetName();
