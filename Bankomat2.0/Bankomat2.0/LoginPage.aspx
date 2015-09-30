@@ -7,8 +7,8 @@
 
         <asp:Label ID="Label1" runat="server" Text="Ange din PIN-kod:"></asp:Label>
         <input id="PasswordButtonPIN" class="labelbuttons" draggable="true" type="password" dir="ltr" />
-        <asp:Button ID="ButtonConfirm" runat="server" class="labelbuttons" Text="Bekräfta" />
-        <asp:Button ID="ButtonCancel" runat="server" Text="Avbryt" class="labelbuttons"/>
+        <asp:Button ID="ButtonConfirm" runat="server" class="labelbuttons", "greenbut" Text="OK" />
+        <asp:Button ID="ButtonCancel" runat="server" Text="Avbryt" class="labelbuttons", "redbut"/>
 
     </div>
 </asp:Content>
