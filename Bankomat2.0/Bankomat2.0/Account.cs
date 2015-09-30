@@ -67,17 +67,6 @@ namespace Bankomat2._0
             }
         }
 
-        /// <summary>
-        /// Stored procedure i SQL, inte färdigt.
-        /// </summary>
-        private void CheckThisDayTransactions()
-        {
-
-            DateTime today = DateTime.Now.Date;
-
-
-        }
-
         public string Number
         {
             get;

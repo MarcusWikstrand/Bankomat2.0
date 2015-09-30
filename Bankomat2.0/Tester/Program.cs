@@ -23,7 +23,7 @@ namespace Tester
             bool authResult = atm.Authenticate("55555", 2222);
             Console.WriteLine($"Login attempt, Outcome: {authResult}");
 
-            //Tests the withdrawal
+            // Tests the withdrawal
             //if (authResult == true)
             //{
             //    try

@@ -56,10 +56,11 @@ namespace Bankomat2._0
             return cAccounts;
         }
 
-        public decimal GetBalance(string number, int clientId)
+        public decimal GetBalance(string number, string card, int clientId)
         {
             Account a = accounts[number];
             Decimal balance = a.Balance;
+            dbFacade.RegisterBalanceAccess(number, clientId, card, Bic);
             return balance;
         }
 
@@ -67,7 +68,7 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[cardNumber];
             Account a = pc.ConnectedAccount;
-            return a.Balance;
+            return GetBalance(a.Number, cardNumber, clientId);
         }
 
         private void LoadCustomerData()
