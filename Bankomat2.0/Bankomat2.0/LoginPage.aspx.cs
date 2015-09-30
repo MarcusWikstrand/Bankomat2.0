@@ -22,6 +22,27 @@ namespace Bankomat2._0
             {
                 Server.Transfer("WelcomePage.aspx");
             }
+            //PIN.Visible = false;
+            //Button1.Visible = false;
+            //Button2.Visible = false;
+            //Button3.Visible = false;
+            //Button4.Visible = false;
+            //Button5.Visible = false;
+            //Button6.Visible = false;
+            //Button7.Visible = false;
+            //Button8.Visible = false;
+            //Button9.Visible = false;
+            //Button10.Visible = false;
+            //ButtonHashtag.Visible = false;
+            //ButtonCancel.Visible = false;
+            //ButtonConfirm.Visible = false;
+            //Backspace.Visible = false;
+            ////  dropdown
+            //lblInsertCard.Visible = true;
+            //DropDownListCards.Visible = true;
+            //lblWrongPIN.Visible = false;
+            //// Reset header label
+            //lblHeader.Text = "Ange din PIN-kod";
         }
 
         protected void ButtonConfirm_Click(object sender, EventArgs e)
@@ -77,6 +98,7 @@ namespace Bankomat2._0
             Label2.Visible = false;
             Label3.Visible = false;
             Label4.Visible = false;
+            ButtonHashtag.Visible = true;
 
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -85,6 +107,7 @@ namespace Bankomat2._0
         }
         protected void ButtonCancel_Click(object sender, EventArgs e)
         {
+            PIN.Visible = false;
             Button1.Visible = false;
             Button2.Visible = false;
             Button3.Visible = false;
@@ -95,6 +118,7 @@ namespace Bankomat2._0
             Button8.Visible = false;
             Button9.Visible = false;
             Button10.Visible = false;
+            ButtonHashtag.Visible = true;
             ButtonCancel.Visible = false;
             ButtonConfirm.Visible = false;
             Backspace.Visible = false;

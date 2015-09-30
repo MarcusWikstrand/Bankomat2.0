@@ -231,39 +231,39 @@ namespace Bankomat2._0
         {
             List<Transaction> results = new List<Transaction>();
 
-            //SqlConnection myConnection = new SqlConnection();
-            //myConnection.ConnectionString = connectionString;
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
 
-            //myConnection.Open();
-            //SqlCommand myCommand = new SqlCommand();
-            //myCommand.Connection = myConnection;
-            //myCommand.CommandType = CommandType.StoredProcedure;
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.StoredProcedure;
 
-            //myCommand.CommandText = $"sp_GetTransactions";
+            myCommand.CommandText = $"sp_GetTransactions";
 
-            //// params
-            //myCommand.Parameters.Add("@Account", SqlDbType.Int);
-            //myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
+            // params
+            myCommand.Parameters.Add("@Account", SqlDbType.Int);
+            myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
 
-            //// Output
-            //myCommand.Parameters.Add("@Amount", SqlDbType.Decimal);
-            //myCommand.Parameters["@Amount"].Direction = ParameterDirection.Output;
-            //myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
-            //myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
+            // Output
+            myCommand.Parameters.Add("@Amount", SqlDbType.Decimal);
+            myCommand.Parameters["@Amount"].Direction = ParameterDirection.Output;
+            myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
+            myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
 
-            //var result = myCommand.ExecuteReader();
+            var result = myCommand.ExecuteReader();
 
-            //using (result)
-            //{
-            //    while (result.Read())
-            //    {
-            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
-            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+            using (result)
+            {
+                while (result.Read())
+                {
+                    decimal amount = Decimal.Parse(result["Amount"].ToString());
+                    DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
 
-            //        Transaction t = new Transaction(amount, time);
-            //        results.Add(t);
-            //    }
-            //}
+                    Transaction t = new Transaction(amount, time);
+                    results.Add(t);
+                }
+            }
 
             return results;
 
