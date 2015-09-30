@@ -121,6 +121,15 @@ namespace Bankomat2._0 {
         protected global::System.Web.UI.WebControls.Button Button9;
         
         /// <summary>
+        /// Button11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button11;
+        
+        /// <summary>
         /// Button10 control.
         /// </summary>
         /// <remarks>
@@ -173,14 +182,5 @@ namespace Bankomat2._0 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCards;
-        
-        /// <summary>
-        /// MakeItSo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button MakeItSo;
     }
 }

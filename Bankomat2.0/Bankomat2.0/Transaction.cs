@@ -28,13 +28,16 @@ namespace Bankomat2._0
             private set;
         }
 
-        public string Account
+        public Account Account
         {
             get
             {
-                return account.Number;
+                return account;
             }
-            set{}
+            set
+            {
+                account = value;
+            }
         }
 
         public int Client
@@ -48,11 +51,6 @@ namespace Bankomat2._0
             private set; 
         }
 
-        public string Description
-        {
-            get;
-        }
-
         public bool Outcome
         {
             get;
@@ -61,7 +59,7 @@ namespace Bankomat2._0
         //Override method to ensure that a method to return the five latest transactions can work.
         public override string ToString()
         {
-            return Amount + Account + Client + Time + Description + Outcome;
+            return ($"  {Amount}, {Time}");
         }
     }
 }

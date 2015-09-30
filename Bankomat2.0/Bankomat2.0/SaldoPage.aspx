@@ -5,6 +5,11 @@
     <p>
         Välj Konto att se Saldo för:</p>
     <p>
-        <asp:ListBox ID="ListOfAccounts" runat="server" Width="215px"></asp:ListBox>
-    </p>
+        &nbsp;</p>
+        <asp:ListBox ID="ListOfAccounts" runat="server" Width="215px" OnSelectedIndexChanged="ListOfAccounts_SelectedIndexChanged"></asp:ListBox>
+    <asp:Button ID="Back" runat="server" OnClick="Back_Click" Text="Tillbaka" />
+    <br />
+    <asp:Label ID="lblShowAccount" runat="server" Text="Ditt saldo är:" Visible="False"></asp:Label>
+    <asp:Label ID="lblSummaSaldo" runat="server" Visible="False"></asp:Label>
+    <asp:Label ID="lblValuta" runat="server" Text="SEK" Visible="False"></asp:Label>
 </asp:Content>

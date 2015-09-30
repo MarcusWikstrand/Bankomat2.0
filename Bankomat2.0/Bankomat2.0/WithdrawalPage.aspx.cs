@@ -61,8 +61,21 @@ namespace Bankomat2._0
 
         protected void TagUtSumma_Click(object sender, EventArgs e)
         {
-            // atm instansierad i denna klass fn.
-            atm.Withdraw(int.Parse(this.SaldoVisning.Text));
+            try
+            {
+                atm.Withdraw(int.Parse(this.SaldoVisning.Text));
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+                lblError.Visible = true;
+            }
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

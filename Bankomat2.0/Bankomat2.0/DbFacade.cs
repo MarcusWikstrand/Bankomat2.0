@@ -150,6 +150,83 @@ namespace Bankomat2._0
             return results;
         }
 
+        public void RegisterAuth(int pin, bool outcome, int clientId, string cardNumber, string bic)
+        {
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.StoredProcedure;
+
+            myCommand.CommandText = $"sp_RegisterAuthentification";
+
+            myCommand.Parameters.Add("@Pin", SqlDbType.Int);
+            myCommand.Parameters.Add("@Outcome", SqlDbType.Bit);
+            myCommand.Parameters.Add("@Client", SqlDbType.Int);
+            myCommand.Parameters.Add("@PaymentCard", SqlDbType.VarChar);
+            myCommand.Parameters.Add("@Bank", SqlDbType.VarChar);
+
+            myCommand.Parameters["@Pin"].Value = pin;
+            myCommand.Parameters["@Outcome"].Value = outcome;
+            myCommand.Parameters["@Client"].Value = clientId;
+            myCommand.Parameters["@PaymentCard"].Value = cardNumber;
+            myCommand.Parameters["@Bank"].Value = bic;
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void RegisterBalanceAccess(string account, int clientId, string cardNumber, string bic)
+        {
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.StoredProcedure;
+
+            myCommand.CommandText = $"sp_RegisterBalanceAccess";
+
+            myCommand.Parameters.Add("@Account", SqlDbType.Int);
+            myCommand.Parameters.Add("@Client", SqlDbType.Int);
+            myCommand.Parameters.Add("@PaymentCard", SqlDbType.VarChar);
+            myCommand.Parameters.Add("@Bank", SqlDbType.VarChar);
+
+            myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
+            myCommand.Parameters["@Client"].Value = clientId;
+            myCommand.Parameters["@PaymentCard"].Value = cardNumber;
+            myCommand.Parameters["@Bank"].Value = bic;
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void RegisterTransactionAccess(string transaction, int clientId, string cardNumber, string bic)
+        {
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.StoredProcedure;
+
+            myCommand.CommandText = $"sp_RegisterTransactionAccess";
+
+            myCommand.Parameters.Add("@Transaction", SqlDbType.Int);
+            myCommand.Parameters.Add("@Client", SqlDbType.Int);
+            myCommand.Parameters.Add("@PaymentCard", SqlDbType.VarChar);
+            myCommand.Parameters.Add("@Bank", SqlDbType.VarChar);
+
+            myCommand.Parameters["@Transaction"].Value = Convert.ToInt32(transaction);
+            myCommand.Parameters["@Client"].Value = clientId;
+            myCommand.Parameters["@PaymentCard"].Value = cardNumber;
+            myCommand.Parameters["@Bank"].Value = bic;
+
+            myCommand.ExecuteNonQuery();
+        }
+
         public List<Transaction> Transactions(string accountNumber)
         {
             List<Transaction> results = new List<Transaction>();

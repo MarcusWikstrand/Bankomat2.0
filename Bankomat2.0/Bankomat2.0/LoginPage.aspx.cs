@@ -28,31 +28,30 @@ namespace Bankomat2._0
         {
             // Mke sure we have udated ATM
             Session["ATM"] = atm;
-            if (cardNumber != null)
+            try
             {
-                try
-                {
-                    atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
-                    // Mke sure we have udated ATM
-                    Session["ATM"] = atm;
-                    // Gå vidare till
-                    Server.Transfer("MainMenu.aspx");
-                }
-                catch (Exception ex)
-                {
-                    lblWrongPIN.Text = ex.Message;
-                    lblWrongPIN.Visible = true;
-                }
-
+                atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
+                // Mke sure we have udated ATM
+                Session["ATM"] = atm;
+                // Gå vidare till
+                Server.Transfer("MainMenu.aspx");
             }
+            catch (Exception ex)
+            {
+                lblWrongPIN.Text = ex.Message;
+                lblWrongPIN.Visible = true;
+            }
+
+
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cardNumber = this.DropDownListCards.SelectedItem.Value;
 
+            Session["cardNumber"] = this.DropDownListCards.SelectedItem.Value.ToString();
+            // Make pin visible
+            EnablePIN();
         }
-
         public void EnablePIN()
         {
             PIN.Visible = true;
@@ -74,7 +73,6 @@ namespace Bankomat2._0
             // Remove the dropdown
             lblInsertCard.Visible = false;
             DropDownListCards.Visible = false;
-            MakeItSo.Visible = false;
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -98,7 +96,6 @@ namespace Bankomat2._0
             //  dropdown
             lblInsertCard.Visible = true;
             DropDownListCards.Visible = true;
-            MakeItSo.Visible = true;
             lblWrongPIN.Visible = false;
             // Reset header label
             lblHeader.Text = "Ange din PIN-kod";

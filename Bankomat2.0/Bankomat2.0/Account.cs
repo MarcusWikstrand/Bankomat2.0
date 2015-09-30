@@ -11,6 +11,7 @@ namespace Bankomat2._0
         private List<Customer> holders;
         private List<PaymentCard> connectedCards;
         private string TypeName;
+
         public Account(string number, Customer holder)
         {
             transactions = new List<Transaction>();
@@ -20,6 +21,7 @@ namespace Bankomat2._0
             holders.Add(holder);
             SetName();
         }
+
         public void SetName(string name = null)
         {
             if (name == null)
@@ -59,17 +61,10 @@ namespace Bankomat2._0
         {
             DbFacade db = DbFacade.GetInstance();
             transactions = db.Transactions(this.Number);
-        }
-
-        /// <summary>
-        /// Stored procedure i SQL, inte färdigt.
-        /// </summary>
-        private void CheckThisDayTransactions()
-        {
-
-            DateTime today = DateTime.Now.Date;
-
-
+            foreach (Transaction t in transactions)
+            {
+                t.Account = this;
+            }
         }
 
         public string Number
@@ -99,14 +94,15 @@ namespace Bankomat2._0
             }
         }
 
-        public List<Customer> Holders
+        public List<Customer> getHolders()
         {
-            get;
+            return holders;
         }
 
         //public method that returns the five latest transactions.
         public List<String> latestFiveTransactions()
         {
+            LoadTransactions();
             List<String> lastFive = new List<String>();
             List<Transaction> myTransaction = transactions.OrderByDescending(i => i.Time).Take(5).ToList();
             foreach (var transaction in myTransaction)

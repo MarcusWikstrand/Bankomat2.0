@@ -128,34 +128,36 @@ namespace Bankomat2._0
         {
             bool authResult = false;
 
-            try
+            if (bank.Authenticate(cardNumber, pin, clientId))
             {
-                if (bank.Authenticate(cardNumber, pin, clientId))
-                {
-                    EnteredCardNumber = cardNumber;
-                    authResult = true;
-                }
-                else
-                {
-                    throw new Exception("Incorrect pin");
-                }
+                EnteredCardNumber = cardNumber;
+                authResult = true;
             }
-            catch (Exception)
+            else
             {
                 EnteredCardNumber = null;
+                throw new Exception("Incorrect pin");
             }
+
 
             return authResult;
         }
 
         public List<string> GetHolderAccounts()
         {
-            return bank.GetHolderAccounts(EnteredCardNumber);
+            if (EnteredCardNumber != null)
+            {
+                return bank.GetHolderAccounts(EnteredCardNumber);
+            }
+            else
+            {
+                throw new Exception("No card Entered.");
+            }
         }
 
         public decimal ViewBalance(string accountNumber)
         {
-            return bank.GetBalance(accountNumber, clientId);
+            return bank.GetBalance(accountNumber, EnteredCardNumber, clientId);
         }
 
         public decimal ViewConnectedAccountBalance()
@@ -186,6 +188,10 @@ namespace Bankomat2._0
             return bank.GetLatestFiveTransactions(accountNumber, clientId);
         }
 
+        #region props
+
         private string EnteredCardNumber { get; set; }
+
+        #endregion
     }
 }
