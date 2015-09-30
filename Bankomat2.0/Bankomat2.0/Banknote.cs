@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Bankomat2._0
+namespace ATMProject._0
 {
     public class Banknote
     {
