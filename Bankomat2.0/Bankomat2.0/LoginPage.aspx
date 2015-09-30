@@ -28,7 +28,7 @@
             <asp:Button ID="Button9" runat="server" class="labelbuttons greybut" Text="9" Visible="False" OnClick="Button9_Click" />
         </div>
         <div class="literight">
-            <asp:Button ID="Button11" runat="server" class="labelbuttons greybut" Text="#" Visible="True" />
+            <asp:Button ID="ButtonHashtag" runat="server" class="labelbuttons greybut" Text="#" Visible="False" />
         <asp:Button ID="Button10" runat="server" class="labelbuttons greybut" Text="0" Visible="False" OnClick="Button10_Click" />
         <asp:Button ID="Backspace" runat="server" class="labelbuttons yellowbut" Text="&lt;-" Visible="False" OnClick="Backspace_Click" />
 

@@ -45,11 +45,11 @@ namespace Bankomat2._0
 
         protected void ListOfAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // store the selected account name
-            Session["selectedAccountName"] = ListOfAccounts.SelectedValue;
+            //// store the selected account name
+            //Session["selectedAccountName"] = ListOfAccounts.SelectedValue;
 
             // Get the total from this account
-            lblSummaSaldo.Text = atm.ViewBalance(Session["selctedAccountName"].ToString()).ToString();
+            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue).ToString();
             // Show the Account name info
             lblShowAccount.Visible = true;
             lblSummaSaldo.Visible = true;
