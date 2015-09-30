@@ -19,7 +19,16 @@ namespace Bankomat2._0 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Reduce100;
+        protected global::System.Web.UI.WebControls.Button Reduce100;
+        
+        /// <summary>
+        /// img100 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img100;
         
         /// <summary>
         /// Add100 control.
@@ -28,7 +37,7 @@ namespace Bankomat2._0 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Add100;
+        protected global::System.Web.UI.WebControls.Button Add100;
         
         /// <summary>
         /// Reduce500 control.
@@ -37,7 +46,7 @@ namespace Bankomat2._0 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Reduce500;
+        protected global::System.Web.UI.WebControls.Button Reduce500;
         
         /// <summary>
         /// img500 control.
@@ -55,7 +64,7 @@ namespace Bankomat2._0 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Add500;
+        protected global::System.Web.UI.WebControls.Button Add500;
         
         /// <summary>
         /// lblError control.

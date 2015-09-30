@@ -14,4 +14,5 @@
             <asp:Label ID="lblSummaSaldo" runat="server" Visible="False"></asp:Label>
             <asp:Label ID="lblValuta" runat="server" Text="SEK" Visible="False"></asp:Label>
         </div>
+        </div>
 </asp:Content>
