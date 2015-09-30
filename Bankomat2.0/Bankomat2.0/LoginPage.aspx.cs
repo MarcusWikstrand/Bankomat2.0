@@ -73,6 +73,11 @@ namespace Bankomat2._0
             // Remove the dropdown
             lblInsertCard.Visible = false;
             DropDownListCards.Visible = false;
+            Label1.Visible = false;
+            Label2.Visible = false;
+            Label3.Visible = false;
+            Label4.Visible = false;
+
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {

@@ -40,16 +40,16 @@
         <asp:Label ID="lblInsertCard" runat="server" Text="Stoppa in ditt kort:"></asp:Label>
     </div>
     <div class="centrera radpaddy">
-        v
+        <asp:Label ID="Label1" runat="server" Text="v"></asp:Label>
     </div>
     <div class="centrera radpaddy">
-        v
+        <asp:Label ID="Label2" runat="server" Text="v"></asp:Label>
     </div>
     <div class="centrera radpaddy">
-        v
+        <asp:Label ID="Label3" runat="server" Text="v"></asp:Label>
     </div>
     <div class="centrera radpaddy">
-        v
+        <asp:Label ID="Label4" runat="server" Text="v"></asp:Label>
     </div>
     <div class="centrera">
         <asp:DropDownList ID="DropDownListCards" class="kortin" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
