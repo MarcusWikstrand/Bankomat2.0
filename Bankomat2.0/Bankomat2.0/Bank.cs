@@ -41,7 +41,6 @@ namespace Bankomat2._0
                 pc.RegisterFailedAuthAttempt();
                 return false;
             }
-
         }
 
         public List<string> GetHolderAccounts(string selectedCard)
@@ -97,7 +96,7 @@ namespace Bankomat2._0
 
         #region props
 
-            //Bank identification code
+        //Bank identification code
         private string Bic { get; set; }
 
         // Bank namn

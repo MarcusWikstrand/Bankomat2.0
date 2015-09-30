@@ -1,9 +1,17 @@
 ﻿body {
+    background-color: #D1D1D1;
     font: Lato, sans-serif;
     font-weight: 400;
+    color: #1C2026;
 }
 
-p {
+.logo {
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+p, div, span, input, label {
     font-family: Lato, sans-serif;
     font-weight: 400;
 }
@@ -13,11 +21,20 @@ p {
     font-weight: 700;
 }
 
-.auto-style1 {
-    width: 411px;
-    height: 113px;
+
+.makeblock {
+    display: block;
 }
 
-.auto-style2 {
-    height: 258px;
+.labelbuttons {
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    color: #1C2026;
+    padding: 20px;
+    background-color: #F5F5F5;
+    border-width: 0;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    margin: 7px;
 }
