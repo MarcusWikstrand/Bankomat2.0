@@ -2,9 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
-    <asp:Button ID="Saldo" runat="server" Text="Saldo" OnClick="Saldo_Click" /> 
-    <asp:Button ID="Uttag" runat="server" Text="Uttag" OnClick="Uttag_Click" /> 
-    <asp:Button ID="Avbryt" runat="server" Text="Avbryt" OnClick="Avbryt_Click" />
+    <div class="centrera">
+        <div>
+    <asp:Button ID="Saldo" runat="server" class="superknapp" Text="Saldo" OnClick="Saldo_Click" /> 
+            </div>
+        <div>
+    <asp:Button ID="Uttag" runat="server" class="superknapp"  Text="Uttag" OnClick="Uttag_Click" /> 
+            </div>
+        <div>
+    <asp:Button ID="Avbryt" runat="server" class="superknapp"  Text="Avbryt" OnClick="Avbryt_Click" />
+    </div>
     </div>
 </asp:Content>

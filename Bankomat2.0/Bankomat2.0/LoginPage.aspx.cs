@@ -28,32 +28,30 @@ namespace Bankomat2._0
         {
             // Mke sure we have udated ATM
             Session["ATM"] = atm;
-            if (cardNumber != null)
+            try
             {
-                try
-                {
-                    atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
-                    // Mke sure we have udated ATM
-                    Session["ATM"] = atm;
-                    // Gå vidare till
-                    Server.Transfer("MainMenu.aspx");
-                }
-                catch (Exception ex)
-                {
-                    lblWrongPIN.Text = ex.Message;
-                    lblWrongPIN.Visible = true;
-                }
-
+                atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
+                // Mke sure we have udated ATM
+                Session["ATM"] = atm;
+                // Gå vidare till
+                Server.Transfer("MainMenu.aspx");
             }
+            catch (Exception ex)
+            {
+                lblWrongPIN.Text = ex.Message;
+                lblWrongPIN.Visible = true;
+            }
+
+
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             Session["cardNumber"] = this.DropDownListCards.SelectedItem.Value.ToString();
             // Make pin visible
             EnablePIN();
         }
-
         public void EnablePIN()
         {
             PIN.Visible = true;
@@ -75,6 +73,11 @@ namespace Bankomat2._0
             // Remove the dropdown
             lblInsertCard.Visible = false;
             DropDownListCards.Visible = false;
+            Label1.Visible = false;
+            Label2.Visible = false;
+            Label3.Visible = false;
+            Label4.Visible = false;
+
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {

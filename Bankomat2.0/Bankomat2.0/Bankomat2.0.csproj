@@ -78,6 +78,7 @@
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
     <Content Include="SaldoPage.aspx" />
+    <Content Include="WaitingPage.aspx" />
     <Content Include="WelcomePage.aspx" />
     <Content Include="WithdrawalPage.aspx" />
     <None Include="Web.Debug.config">
@@ -132,6 +133,13 @@
       <DependentUpon>SaldoPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
+    <Compile Include="WaitingPage.aspx.cs">
+      <DependentUpon>WaitingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaitingPage.aspx.designer.cs">
+      <DependentUpon>WaitingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WelcomePage.aspx.cs">
       <DependentUpon>WelcomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
