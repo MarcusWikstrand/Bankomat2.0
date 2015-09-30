@@ -251,19 +251,22 @@ namespace Bankomat2._0
             myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
             myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
 
-            var result = myCommand.ExecuteReader();
+            var result = myCommand.ExecuteNonQuery();
 
-            using (result)
-            {
-                while (result.Read())
-                {
-                    decimal amount = Decimal.Parse(result["Amount"].ToString());
-                    DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+            var am = myCommand.Parameters["@Amount"].Value;
+            var tranTime = myCommand.Parameters["@TransactionTime"].Value;
 
-                    Transaction t = new Transaction(amount, time);
-                    results.Add(t);
-                }
-            }
+            //using (result)
+            //{
+            //    while (result.Read())
+            //    {
+            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
+            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+
+            //        Transaction t = new Transaction(amount, time);
+            //        results.Add(t);
+            //    }
+            //}
 
             return results;
 

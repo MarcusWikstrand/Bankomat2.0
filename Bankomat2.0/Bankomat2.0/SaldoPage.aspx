@@ -13,6 +13,10 @@
             <asp:Label ID="lblShowAccount" runat="server" Text="Ditt saldo är:" Visible="False"></asp:Label>
             <asp:Label ID="lblSummaSaldo" runat="server" Visible="False"></asp:Label>
             <asp:Label ID="lblValuta" runat="server" Text="SEK" Visible="False"></asp:Label>
+            <br />
+            <asp:Label ID="lblTransactions" runat="server" Text="De fem senaste transaktionerna" Visible="False"></asp:Label>
+            <br />
+            <asp:ListBox ID="ListTransactions" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Visible="False"></asp:ListBox>
         </div>
         </div>
 </asp:Content>
