@@ -30,13 +30,15 @@ namespace Bankomat2._0
             {
                 try
                 {
-                    atm.Authenticate(cardNumber, int.Parse(this.PIN.Text)); 
+                    atm.Authenticate(cardNumber, int.Parse(this.PIN.Text));
+                    // Gå vidare till
+                    Server.Transfer("MainMenu.aspx");
                 }
                 catch (Exception ex)
                 {
                     lblWrongPIN.Text = ex.Message;
                     lblWrongPIN.Visible = true;
-                              } 
+                } 
                 
             }
         }
@@ -69,6 +71,11 @@ namespace Bankomat2._0
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
+            // Useless
+        }
+        protected void ButtonCancel_Click(object sender, EventArgs e)
+        {
+
             Button1.Visible = false;
             Button2.Visible = false;
             Button3.Visible = false;
@@ -85,17 +92,65 @@ namespace Bankomat2._0
             lblInsertCard.Visible = true;
             DropDownListCards.Visible = true;
 
+            lblWrongPIN.Visible = false;
             // Reset header label
             lblHeader.Text = "Ange din PIN-kod";
-        }
-        protected void ButtonCancel_Click(object sender, EventArgs e)
-        {
-
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+            PIN.Text += "1"; 
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "2";
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "3";
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "4";
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "5";
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "6";
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "7";
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "8";
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "9";
+        }
+
+        protected void Button10_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "0";
+        }
+
+        protected void Backspace_Click(object sender, EventArgs e)
+        {
+            //Remove last number
+            PIN.Text = PIN.Text.Substring(0, PIN.Text.Count() - 1);
+        }
     }
 }
