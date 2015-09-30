@@ -12,7 +12,7 @@ namespace Bankomat2._0
 
         List<String> quoteList = new List<string>()
         {
-            "Hellre än rövare i poolen… -okänd.",
+            "Bättre än rövare i poolen… -okänd.",
         "Be the change you want to see in the world. - Göran Isacson",
         "Say 'what' again, I dare you, I double dare you motherfucker, say 'what' one more Goddamn time!- Magnus Härenstam",
         "We have nothing to fear but fear itself. - Göran Isacson",
