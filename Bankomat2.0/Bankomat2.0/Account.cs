@@ -59,6 +59,10 @@ namespace Bankomat2._0
         {
             DbFacade db = DbFacade.GetInstance();
             transactions = db.Transactions(this.Number);
+            foreach (Transaction t in transactions)
+            {
+                t.Account = this;
+            }
         }
 
         /// <summary>
@@ -107,6 +111,7 @@ namespace Bankomat2._0
         //public method that returns the five latest transactions.
         public List<String> latestFiveTransactions()
         {
+            LoadTransactions();
             List<String> lastFive = new List<String>();
             List<Transaction> myTransaction = transactions.OrderByDescending(i => i.Time).Take(5).ToList();
             foreach (var transaction in myTransaction)

@@ -28,7 +28,7 @@ namespace Tester
             {
                 try
                 {
-                    int amount = 100;
+                    int amount = 200;
                     Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
                     Console.WriteLine($"Trying to withdraw {amount}:-");
                     atm.Withdraw(amount);
@@ -42,8 +42,9 @@ namespace Tester
             }
 
             // Tests the transactions
-            //List<String> latestTrans = atm.getFiveLatestTransactions("51425555555");
-            //latestTrans.ForEach(Console.WriteLine);
+            Console.WriteLine(System.Environment.NewLine + "Transaction on the account:" );
+            List<String> latestTrans = atm.getFiveLatestTransactions("55555");
+            latestTrans.ForEach(Console.WriteLine);
 
             // Test the database
             //DbFacade dbFacade = new DbFacade();

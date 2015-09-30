@@ -150,7 +150,14 @@ namespace Bankomat2._0
 
         public List<string> GetHolderAccounts()
         {
-            return bank.GetHolderAccounts(EnteredCardNumber);
+            if (EnteredCardNumber != null)
+            {
+                return bank.GetHolderAccounts(EnteredCardNumber);
+            }
+            else
+            {
+                throw new Exception("No card Entered.");
+            }
         }
 
         public decimal ViewBalance(string accountNumber)

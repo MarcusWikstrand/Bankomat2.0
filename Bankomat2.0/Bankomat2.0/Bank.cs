@@ -93,7 +93,6 @@ namespace Bankomat2._0
         {
             Account currentAccount = accounts[accountNumber];
             return currentAccount.latestFiveTransactions();
-
         }
 
         #region props
