@@ -77,5 +77,33 @@ namespace Bankomat2._0
         {
 
         }
+
+        protected void Add100_Click(object sender, EventArgs e)
+        {
+            int saldo = int.Parse(this.SaldoVisning.Text);
+            saldo += 100;
+            this.SaldoVisning.Text = saldo.ToString();
+        }
+
+        protected void Reduce100_Click1(object sender, EventArgs e)
+        {
+            int saldo = int.Parse(this.SaldoVisning.Text);
+            saldo -= 100;
+            this.SaldoVisning.Text = saldo.ToString();
+        }
+
+        protected void Reduce500_Click(object sender, EventArgs e)
+        {
+            int saldo = int.Parse(this.SaldoVisning.Text);
+            saldo -= 500;
+            this.SaldoVisning.Text = saldo.ToString();
+        }
+
+        protected void Add500_Click(object sender, EventArgs e)
+        {
+            int saldo = int.Parse(this.SaldoVisning.Text);
+            saldo += 500;
+            this.SaldoVisning.Text = saldo.ToString();
+        }
     }
 }

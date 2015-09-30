@@ -25,6 +25,8 @@ namespace Bankomat2._0
             }
 
             // populate list of accounts.
+            // clear first
+            ListOfAccounts.Items.Clear();
             try
             {
                 foreach (var accountname in atm.GetHolderAccounts())
@@ -36,29 +38,44 @@ namespace Bankomat2._0
             {
                 ListOfAccounts.Items.Clear();
                 ListOfAccounts.Items.Add(ex.Message);
-                
+
             }
-            
-            
+
+
 
         }
 
         protected void ListOfAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //// store the selected account name
-            //Session["selectedAccountName"] = ListOfAccounts.SelectedValue;
+            // Clear both just in case
+            ListTransactions.Items.Clear();
 
             // Get the total from this account
-            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue).ToString();
+            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue.ToString()).ToString();
             // Show the Account name info
             lblShowAccount.Visible = true;
             lblSummaSaldo.Visible = true;
             lblValuta.Visible = true;
+
+            // Five latest transactions stuff
+            foreach (var item in atm.getFiveLatestTransactions(ListOfAccounts.SelectedValue))
+            {
+                ListTransactions.Items.Add(item);
+            }
+
+
+            lblTransactions.Visible = true;
+            ListTransactions.Visible = true;
         }
 
         protected void Back_Click(object sender, EventArgs e)
         {
             Server.Transfer("MainMenu.aspx");
+        }
+
+        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
