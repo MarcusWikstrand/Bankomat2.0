@@ -9,10 +9,17 @@ namespace Bankomat2._0
     {
         private Account account;
 
-        public Transaction(decimal amount, Account account)
+        public Transaction(decimal amount, DateTime dt)
+        {
+            Amount = amount;
+            Time = dt;
+        }
+
+        public Transaction(decimal amount, Account account, DateTime dt)
         {
             Amount = amount;
             this.account = account;
+            Time = dt;
         }
 
         public decimal Amount
@@ -27,7 +34,7 @@ namespace Bankomat2._0
             {
                 return account.Number;
             }
-            private set{}
+            set{}
         }
 
         public int Client
@@ -38,7 +45,7 @@ namespace Bankomat2._0
         public DateTime Time
         {
             get;
-            
+            private set; 
         }
 
         public string Description
