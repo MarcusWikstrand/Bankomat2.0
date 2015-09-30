@@ -1,13 +1,23 @@
 ﻿body {
+    font: Lato, sans-serif;
+    font-weight: 400;
 }
 
-.logo {
+p {
+    font-family: Lato, sans-serif;
+    font-weight: 400;
 }
 
-   .auto-style1 {
-            width: 411px;
-            height: 113px;
-        }
-        .auto-style2 {
-            height: 258px;
-        }
+.highlight {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+}
+
+.auto-style1 {
+    width: 411px;
+    height: 113px;
+}
+
+.auto-style2 {
+    height: 258px;
+}
