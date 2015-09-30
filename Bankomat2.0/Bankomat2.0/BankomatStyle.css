@@ -42,7 +42,7 @@ p, div, span, input, label {
     margin: 6px;
 }
 
-.superknapp{
+.superknapp {
     font-family: Lato, sans-serif;
     font-weight: 700;
     color: #1C2026;
@@ -56,23 +56,23 @@ p, div, span, input, label {
 }
 
 .greybut {
-     background-color: #F5F5F5;
+    background-color: #F5F5F5;
 }
 
-.redbut{
-     background-color: #FF1919;
+.redbut {
+    background-color: #FF1919;
 }
 
 .greenbut {
-     background-color: #00CC66;
+    background-color: #00CC66;
 }
 
 .yellowbut {
-     background-color: #FCEC25;
+    background-color: #FCEC25;
 }
 
 .centrera {
-   text-align:center;
+    text-align: center;
 }
 
 .kortin {
@@ -88,9 +88,10 @@ p, div, span, input, label {
     background-color: #5C5C5C;
 }
 
-.radpaddy{
+.radpaddy {
     padding: 10px;
 }
+
 .literight {
     margin-left: 182px;
 }
@@ -98,4 +99,30 @@ p, div, span, input, label {
 .litespace {
     margin-bottom: 30px;
     margin-top: 30px;
+}
+
+.roundbuttplus {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    color: #1C2026;
+    width: 70px;
+    height: 70px;
+    border-width: 0;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    margin: 6px;
+}
+
+.roundbuttminus {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    color: #1C2026;
+    width: 70px;
+    height: 70px;
+    border-width: 0;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    margin: 6px;
 }

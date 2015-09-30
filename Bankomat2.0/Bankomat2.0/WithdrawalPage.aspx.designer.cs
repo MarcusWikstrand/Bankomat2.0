@@ -22,15 +22,6 @@ namespace Bankomat2._0 {
         protected global::System.Web.UI.WebControls.ImageButton Reduce100;
         
         /// <summary>
-        /// img100 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img100;
-        
-        /// <summary>
         /// Add100 control.
         /// </summary>
         /// <remarks>
