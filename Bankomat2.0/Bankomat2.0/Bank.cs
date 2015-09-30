@@ -49,7 +49,7 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[selectedCard];
             Customer c = pc.Holder;
-            List<string> cAccounts = (from account in accounts where account.Value.Holders.Contains(c) select account.Key) as List<string>;
+            List<string> cAccounts = (from account in accounts where account.Value.getHolders().Contains(c) select account.Key) as List<string>;
 
             return cAccounts;
         }
@@ -93,7 +93,6 @@ namespace Bankomat2._0
         {
             Account currentAccount = accounts[accountNumber];
             return currentAccount.latestFiveTransactions();
-
         }
 
         #region props

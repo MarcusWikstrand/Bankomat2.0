@@ -31,10 +31,25 @@ p, div, span, input, label {
     font-weight: 400;
     color: #1C2026;
     padding: 20px;
-    background-color: #F5F5F5;
     border-width: 0;
     outline: none;
-    border-radius: 3px;
+    border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    margin: 7px;
+    margin: 6px;
+}
+
+.greybut {
+     background-color: #F5F5F5;
+}
+
+.redbut{
+     background-color: #FF1919;
+}
+
+.greenbut {
+     background-color: #00CC66;
+}
+
+.yellowbut {
+     background-color: #FCEC25;
 }
