@@ -79,7 +79,7 @@ namespace Bankomat2._0
 
             foreach (Account a in customerData.ElementAt(1))
             {
-                Accounts.Add(a.Number, a);
+                accounts.Add(a.Number, a);
             }
 
             foreach (PaymentCard pc in customerData.ElementAt(2))

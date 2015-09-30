@@ -22,12 +22,10 @@
         <asp:Button ID="Button8" runat="server" Text="8" Width="30px" Visible="False" OnClick="Button8_Click" />
         <asp:Button ID="Button9" runat="server" Text="9" Width="30px" Visible="False" OnClick="Button9_Click" />
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="ButtonConfirm" runat="server" Text="OK" OnClick="ButtonConfirm_Click" Visible="False" Width="30px"/>
         <asp:Button ID="Button10" runat="server" Text="0" Width="30px" Visible="False" OnClick="Button10_Click" />
-        &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Backspace" runat="server" Text="&lt;-" Width="30px" Visible="False" OnClick="Backspace_Click" />
         <br />
-        <asp:Button ID="ButtonConfirm" runat="server" Text="Bekräfta" OnClick="ButtonConfirm_Click" Visible="False" Width="90px"/>
         <br />
         <asp:Button ID="ButtonCancel" runat="server" Text="Avbryt" Width="90px" OnClick="ButtonCancel_Click" Visible="False"/>
         
