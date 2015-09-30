@@ -8,8 +8,9 @@
             <asp:Label ID="lblHeader" runat="server" Text="Ange din PIN-kod" Visible="False"></asp:Label>
         </div>
         <div class="centrera">
-            <asp:TextBox ID="PIN" runat="server" OnTextChanged="TextBox1_TextChanged" Visible="False" class="labelbuttons"></asp:TextBox>
-            <asp:Label ID="lblWrongPIN" runat="server" ForeColor="#FF1919" Text="Felaktig PIN kod" Visible="False"></asp:Label>
+        <asp:TextBox ID="PIN" runat="server" OnTextChanged="TextBox1_TextChanged" Visible="False" class="labelbuttons"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblWrongPIN" runat="server" ForeColor="#FF1919" Text="Felaktig PIN kod" Visible="False"></asp:Label>
         </div>
         <div class="centrera">
             <asp:Button ID="Button1" runat="server" class="labelbuttons greybut" Text="1" Visible="False" OnClick="Button1_Click" />
@@ -28,11 +29,11 @@
         </div>
         <div class="literight">
             <asp:Button ID="Button11" runat="server" class="labelbuttons greybut" Text="#" Visible="True" />
-            <asp:Button ID="Button10" runat="server" class="labelbuttons greybut" Text="0" Visible="False" OnClick="Button10_Click" />
-            <asp:Button ID="Backspace" runat="server" class="labelbuttons yellowbut" Text="&lt;-" Visible="False" OnClick="Backspace_Click" />
-       
-            <asp:Button ID="ButtonConfirm" runat="server" class="labelbuttons greenbut" Text="OK" OnClick="ButtonConfirm_Click" Visible="False" />
-            <asp:Button ID="ButtonCancel" runat="server" class="labelbuttons redbut" Text="Avbryt" OnClick="ButtonCancel_Click" Visible="False" />
+        <asp:Button ID="Button10" runat="server" class="labelbuttons greybut" Text="0" Visible="False" OnClick="Button10_Click" />
+        <asp:Button ID="Backspace" runat="server" class="labelbuttons yellowbut" Text="&lt;-" Visible="False" OnClick="Backspace_Click" />
+
+        <asp:Button ID="ButtonConfirm" runat="server" class="labelbuttons greenbut" Text="OK" OnClick="ButtonConfirm_Click" Visible="False" />
+        <asp:Button ID="ButtonCancel" runat="server" class="labelbuttons redbut" Text="Avbryt" OnClick="ButtonCancel_Click" Visible="False" />
         </div>
     </div>
     <div class="centrera">
@@ -51,14 +52,12 @@
         v
     </div>
     <div class="centrera">
-        <asp:DropDownList ID="DropDownListCards" class="kortin" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:DropDownList ID="DropDownListCards" class="kortin" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Selected="True">Välj ett Kort!</asp:ListItem>
             <asp:ListItem>55555</asp:ListItem>
             <asp:ListItem>66666</asp:ListItem>
             <asp:ListItem>77777</asp:ListItem>
             <asp:ListItem>88888</asp:ListItem>
+
         </asp:DropDownList>
-
-        <asp:Button ID="MakeItSo" runat="server" class="labelbuttons greybut" OnClick="MakeItSo_Click" Text="Den glider in..." />
-    </div>
-
 </asp:Content>
