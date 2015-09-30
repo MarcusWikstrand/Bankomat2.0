@@ -150,7 +150,35 @@ namespace Bankomat2._0
             return results;
         }
 
-        public DateTime MakeTransaction()
+        public List<Transaction> Transactions(string accountNumber)
+        {
+            List<Transaction> results = new List<Transaction>();
+
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandText = $"SELECT Amount, TransactionTime FROM AccountTransaction WHERE Account = {accountNumber}";
+
+            var result = myCommand.ExecuteReader();
+
+            using (result)
+            {
+                while (result.Read())
+                {
+                    decimal amount = Decimal.Parse(result["Amount"].ToString());
+                    DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+
+                    Transaction t = new Transaction(amount, time);
+                    results.Add(t);
+                }
+            }
+
+            return results;
+        }
+
+        public DateTime MakeTransaction(string account, decimal amount, bool outcome, int client, string cardNumber, string bank)
         {
             DateTime dt = new DateTime();
 
@@ -171,12 +199,12 @@ namespace Bankomat2._0
             myCommand.Parameters.Add("@PaymentCard", SqlDbType.VarChar);
             myCommand.Parameters.Add("@Bank", SqlDbType.VarChar);
 
-            myCommand.Parameters["@Account"].Value = 55555;
-            myCommand.Parameters["@Amount"].Value = 100;
-            myCommand.Parameters["@Outcome"].Value = "true";
-            myCommand.Parameters["@Client"].Value = 1337;
-            myCommand.Parameters["@PaymentCard"].Value = "66666";
-            myCommand.Parameters["@Bank"].Value = "00000001";
+            myCommand.Parameters["@Account"].Value = account;
+            myCommand.Parameters["@Amount"].Value = amount;
+            myCommand.Parameters["@Outcome"].Value = outcome;
+            myCommand.Parameters["@Client"].Value = client;
+            myCommand.Parameters["@PaymentCard"].Value = cardNumber;
+            myCommand.Parameters["@Bank"].Value = bank;
 
 
             myCommand.Parameters.Add("@Time", SqlDbType.DateTime);

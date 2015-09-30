@@ -17,7 +17,7 @@ namespace Bankomat2._0
             bank = new Bank();
             clientId = id;
             currentlyAvailableBanknotes = new List<Banknote>();
-            SeedAtmWithFakeMoney();
+            ReadNumBanknotesInAtm();
         }
 
         public void Withdraw(int withdrawalAmount)
@@ -161,7 +161,7 @@ namespace Bankomat2._0
             return bank.GetConnectedAccountBalance(EnteredCardNumber, clientId);
         }
 
-        private void SeedAtmWithFakeMoney()
+        private void ReadNumBanknotesInAtm()
         {
             // Seeds 5 500sek banknotes
             for (int i = 0; i <= 5; i++)

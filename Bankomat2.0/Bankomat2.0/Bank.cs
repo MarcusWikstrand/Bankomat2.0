@@ -11,9 +11,11 @@ namespace Bankomat2._0
         private Dictionary<string, Customer> customers;
         private Dictionary<string, Account> accounts;
         private DbFacade dbFacade;
+        private string bic;
 
         public Bank()
         {
+            bic = "00000001";
             paymentCards = new Dictionary<string, PaymentCard>();
             customers = new Dictionary<string, Customer>();
             accounts = new Dictionary<string, Account>();
@@ -25,7 +27,7 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[cardNumber];
             Account currentAccount = pc.ConnectedAccount;
-            currentAccount.MakeTransaction(amount);
+            currentAccount.MakeTransaction(amount, clientId, cardNumber, Bic);
             return true;
         }
 
@@ -47,14 +49,14 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[selectedCard];
             Customer c = pc.Holder;
-            List<string> cAccounts = (from account in Accounts where account.Value.Holders.Contains(c) select account.Key) as List<string>;
+            List<string> cAccounts = (from account in accounts where account.Value.Holders.Contains(c) select account.Key) as List<string>;
 
             return cAccounts;
         }
 
         public decimal GetBalance(string number, int clientId)
         {
-            Account a = Accounts[number];
+            Account a = accounts[number];
             Decimal balance = a.Balance;
             return balance;
         }
@@ -89,7 +91,7 @@ namespace Bankomat2._0
         //Display the five latest events to take place within this specific account.
         public List<String> GetLatestFiveTransactions(string accountNumber, int clientID)
         {
-            Account currentAccount = Accounts[accountNumber];
+            Account currentAccount = accounts[accountNumber];
             return currentAccount.latestFiveTransactions();
 
         }
@@ -97,13 +99,19 @@ namespace Bankomat2._0
         #region props
 
         //Bank identification code
-        private string Bic { get; set; }
+        private string Bic {
+            get
+            {
+                return bic;
+            }
+            set
+            {
+                bic = value;
+            }
+        }
 
         // Bank namn
         private string Name { get; set; }
-
-        // Account list
-        private Dictionary<string, Account> Accounts { get; set; }
 
         // max cash withdrawal per day
         private int MaxDailyWithdrawalAmount { get; set; }
