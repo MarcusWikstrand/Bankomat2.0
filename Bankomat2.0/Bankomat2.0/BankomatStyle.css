@@ -106,17 +106,20 @@ p, div, span, input, label {
     font-family: Lato, sans-serif;
     font-weight: 700;
     color: #1C2026;
+    font-size: 30px;
     width: 70px;
     height: 70px;
     border-width: 0;
     outline: none;
     border-radius: 50%;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    display: inline-block;
 }
 
 .roundbuttminus {
     font-family: Lato, sans-serif;
     font-weight: 700;
+    font-size: 30px;
     color: #1C2026;
     width: 70px;
     height: 70px;
@@ -124,6 +127,7 @@ p, div, span, input, label {
     outline: none;
     border-radius: 50%;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    display: inline-block;
 }
 
 .sedelpadd {
