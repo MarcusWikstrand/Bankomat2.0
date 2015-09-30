@@ -95,11 +95,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
     <Compile Include="ATM.cs" />
-    <Compile Include="Bank.cs" />
     <Compile Include="Banknote.cs" />
-    <Compile Include="DbFacade.cs" />
     <Compile Include="FinishedTransactionPage.aspx.cs">
       <DependentUpon>FinishedTransactionPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -124,8 +121,6 @@
     <Compile Include="MainMenu.aspx.designer.cs">
       <DependentUpon>MainMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PaymentCard.cs" />
-    <Compile Include="Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.Master.cs">
       <DependentUpon>Default.Master</DependentUpon>
@@ -148,7 +143,6 @@
     <Compile Include="SaldoPage.aspx.designer.cs">
       <DependentUpon>SaldoPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Transaction.cs" />
     <Compile Include="WaitingPage.aspx.cs">
       <DependentUpon>WaitingPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,6 +168,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bank\Bank.csproj">
+      <Project>{4ff04e45-0a2f-4dff-98f4-e287e25487ad}</Project>
+      <Name>Bank</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
