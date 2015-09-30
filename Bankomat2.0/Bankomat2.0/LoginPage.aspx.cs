@@ -10,7 +10,7 @@ namespace Bankomat2._0
     public partial class LoginPage : System.Web.UI.Page
     {
         public ATM atm;
-        private string cardNumber;
+        public string cardNumber = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["ATM"] != null)
@@ -26,30 +26,36 @@ namespace Bankomat2._0
 
         protected void ButtonConfirm_Click(object sender, EventArgs e)
         {
-            if (cardNumber != null && cardNumber == this.DropDownListCards.SelectedItem.Value)
+            // Mke sure we have udated ATM
+            Session["ATM"] = atm;
+            if (cardNumber != null)
             {
                 try
                 {
-                    atm.Authenticate(cardNumber, int.Parse(this.PIN.Text)); 
+                    atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
+                    // Mke sure we have udated ATM
+                    Session["ATM"] = atm;
+                    // Gå vidare till
+                    Server.Transfer("MainMenu.aspx");
                 }
                 catch (Exception ex)
                 {
                     lblWrongPIN.Text = ex.Message;
                     lblWrongPIN.Visible = true;
-                              } 
-                
+                }
+
             }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cardNumber = this.DropDownListCards.SelectedItem.Value;
-            // Make pin visible
-            EnablePIN();
+
         }
 
         public void EnablePIN()
         {
+            PIN.Visible = true;
             lblHeader.Text = "Kort Läst!";
             Button1.Visible = true;
             Button2.Visible = true;
@@ -60,14 +66,21 @@ namespace Bankomat2._0
             Button7.Visible = true;
             Button8.Visible = true;
             Button9.Visible = true;
+            Button10.Visible = true;
             ButtonCancel.Visible = true;
             ButtonConfirm.Visible = true;
+            Backspace.Visible = true;
 
             // Remove the dropdown
             lblInsertCard.Visible = false;
             DropDownListCards.Visible = false;
+            MakeItSo.Visible = false;
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Useless
+        }
+        protected void ButtonCancel_Click(object sender, EventArgs e)
         {
             Button1.Visible = false;
             Button2.Visible = false;
@@ -78,24 +91,81 @@ namespace Bankomat2._0
             Button7.Visible = false;
             Button8.Visible = false;
             Button9.Visible = false;
+            Button10.Visible = false;
             ButtonCancel.Visible = false;
             ButtonConfirm.Visible = false;
-
-            // Remove the dropdown
+            Backspace.Visible = false;
+            //  dropdown
             lblInsertCard.Visible = true;
             DropDownListCards.Visible = true;
-
+            MakeItSo.Visible = true;
+            lblWrongPIN.Visible = false;
             // Reset header label
             lblHeader.Text = "Ange din PIN-kod";
-        }
-        protected void ButtonCancel_Click(object sender, EventArgs e)
-        {
-
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+            PIN.Text += "1";
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "2";
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "3";
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "4";
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "5";
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "6";
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "7";
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "8";
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "9";
+        }
+
+        protected void Button10_Click(object sender, EventArgs e)
+        {
+            PIN.Text += "0";
+        }
+
+        protected void Backspace_Click(object sender, EventArgs e)
+        {
+            //Remove last number
+            PIN.Text = PIN.Text.Substring(0, PIN.Text.Count() - 1);
+        }
+
+        protected void MakeItSo_Click(object sender, EventArgs e)
+        {
+            Session["cardNumber"] = this.DropDownListCards.SelectedItem.Value.ToString();
+            // Make pin visible
+            EnablePIN();
+
+        }
     }
 }

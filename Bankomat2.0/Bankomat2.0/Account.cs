@@ -11,6 +11,7 @@ namespace Bankomat2._0
         private List<Customer> holders;
         private List<PaymentCard> connectedCards;
         private string TypeName;
+
         public Account(string number, Customer holder)
         {
             transactions = new List<Transaction>();
@@ -20,6 +21,7 @@ namespace Bankomat2._0
             holders.Add(holder);
             SetName();
         }
+
         public void SetName(string name = null)
         {
             if (name == null)
@@ -33,15 +35,18 @@ namespace Bankomat2._0
             
         }
 
-        public bool MakeTransaction(decimal amount)
+        public bool MakeTransaction(decimal amount, int client, string cardNumber, string bank)
         {
+            DbFacade db = DbFacade.GetInstance();
+
+            // Conduct transaction
             if (Balance >= amount)
             {
-                decimal newBalance = Balance - amount;
-                Balance = newBalance;
-                Transaction newT = new Transaction(amount, this);
+                amount = Decimal.Negate(amount);
+                DateTime dt = db.MakeTransaction(Number, amount, true,client, cardNumber, bank);
+
+                Transaction newT = new Transaction(amount, this, dt);
                 transactions.Add(newT);
-                DbFacade db = DbFacade.GetInstance();
 
                 return true;
             }
@@ -50,6 +55,16 @@ namespace Bankomat2._0
                 throw new Exception("Otillräkliga tillgångar på kontot.");
             }
 
+        }
+
+        private void LoadTransactions()
+        {
+            DbFacade db = DbFacade.GetInstance();
+            transactions = db.Transactions(this.Number);
+            foreach (Transaction t in transactions)
+            {
+                t.Account = this;
+            }
         }
 
         /// <summary>
@@ -71,18 +86,34 @@ namespace Bankomat2._0
 
         public decimal Balance
         {
-            get;
-            private set;
+            get
+            {
+                LoadTransactions();
+                Decimal result = new Decimal(0);
+
+                List<Decimal> tranAmouns = (from tran in transactions select tran.Amount).ToList();
+                foreach (Decimal tranAmount in tranAmouns)
+                {
+                    result = result + tranAmount;
+                }
+
+                return result;
+            }
+            private set
+            {
+                Balance = value;
+            }
         }
 
-        public List<Customer> Holders
+        public List<Customer> getHolders()
         {
-            get;
+            return holders;
         }
 
         //public method that returns the five latest transactions.
         public List<String> latestFiveTransactions()
         {
+            LoadTransactions();
             List<String> lastFive = new List<String>();
             List<Transaction> myTransaction = transactions.OrderByDescending(i => i.Time).Take(5).ToList();
             foreach (var transaction in myTransaction)
