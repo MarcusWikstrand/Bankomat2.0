@@ -104,20 +104,20 @@ INSERT INTO PaymentCard (Pin, CardNumber, Holder, PrimaryAccount) VALUES (2222, 
 INSERT INTO PaymentCard (Pin, CardNumber, Holder, PrimaryAccount) VALUES (3333, '77777', '199017177777', 77777);
 INSERT INTO PaymentCard (Pin, CardNumber, Holder, PrimaryAccount) VALUES (4444, '88888', '199017176666', 88888);
 
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', -1000, 'true', 1337, '88888', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', -500, 'true', 1337, '88888', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', -200, 'true', 1337, '88888', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', -100, 'true', 1337, '88888', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', -300, 'true', 1337, '77777', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', -100, 'true', 1337, '77777', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', -100, 'true', 1337, '77777', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', -300, 'true', 1337, '66666', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', -500, 'true', 1337, '66666', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', -400, 'true', 1337, '66666', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', -100, 'true', 1337, '55555', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', -1000, 'true', 1337, '55555', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', -1200, 'true', 1337, '55555', '00000001');
-INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', -1100, 'true', 1337, '55555', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', 1000, 'true', 1337, '88888', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', 500, 'true', 1337, '88888', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', 200, 'true', 1337, '88888', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('55555', 100, 'true', 1337, '88888', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', 300, 'true', 1337, '77777', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', 100, 'true', 1337, '77777', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('66666', 100, 'true', 1337, '77777', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', 300, 'true', 1337, '66666', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', 500, 'true', 1337, '66666', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('77777', 400, 'true', 1337, '66666', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', 100, 'true', 1337, '55555', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', 1000, 'true', 1337, '55555', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', 1200, 'true', 1337, '55555', '00000001');
+INSERT INTO AccountTransaction (Account, Amount, Outcome, Client, PaymentCard, Bank) VALUES ('88888', 1100, 'true', 1337, '55555', '00000001');
 
 
 
@@ -176,5 +176,42 @@ begin
 END
 go
 
+create procedure [dbo].[sp_RegisterAuthentification]
+	-- Add the parameters for the stored procedure here
+	@Pin int,
+    @Outcome bit,
+    @Client int,
+    @PaymentCard varchar(5),
+    @Bank varchar(8)
+as
+begin
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
 
+    -- Insert statements for procedure here
+	DECLARE @ErrMsg varchar(4000);
+
+	BEGIN TRY
+	  PRINT 'Maing an auth'
+	  BEGIN TRANSACTION [myTran]
+		INSERT INTO BankAuthentication(Pin, Outcome, Client, PaymentCard, Bank) 
+		VALUES (@Pin, @Outcome, @Client, @PaymentCard, @Bank)
+	  COMMIT TRANSACTION [myTran]
+	  PRINT 'Transaction completed.'
+	END TRY
+	BEGIN CATCH
+	  IF(@@TRANCOUNT>0)
+	  BEGIN
+		--@ErrMsg = 'Test'
+		PRINT ERROR_MESSAGE()
+		PRINT 'Error, transaction will rollback'	
+		ROLLBACK TRANSACTION [myTran]
+		PRINT 'Done.'
+	  END
+	END CATCH
+
+	SET NOCOUNT OFF
+END
+go
 
