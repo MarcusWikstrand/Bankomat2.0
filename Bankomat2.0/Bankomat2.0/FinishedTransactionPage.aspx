@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centrera">
-        <h2>Vänligen ta dina sedlar!</h2>
+        <h2 class="litespace">Vänligen ta dina sedlar!</h2>
         <div>
             <asp:Button ID="ButtonKvitto" runat="server" class="superknapp" Text="Få Kvitto?" />
         </div>
