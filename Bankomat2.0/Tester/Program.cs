@@ -24,31 +24,34 @@ namespace Tester
             Console.WriteLine($"Login attempt, Outcome: {authResult}");
 
             //Tests the withdrawal
-            if (authResult == true)
-            {
-                try
-                {
-                    int amount = 200;
-                    Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
-                    Console.WriteLine($"Trying to withdraw {amount}:-");
-                    atm.Withdraw(amount);
-                    Console.WriteLine($"Balance after transaction " + atm.ViewConnectedAccountBalance());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+            //if (authResult == true)
+            //{
+            //    try
+            //    {
+            //        int amount = 200;
+            //        Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
+            //        Console.WriteLine($"Trying to withdraw {amount}:-");
+            //        atm.Withdraw(amount);
+            //        Console.WriteLine($"Balance after transaction " + atm.ViewConnectedAccountBalance());
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //    }
 
-            }
+            //}
 
             // Tests the transactions
-            Console.WriteLine(System.Environment.NewLine + "Transaction on the account:" );
-            List<String> latestTrans = atm.getFiveLatestTransactions("55555");
-            latestTrans.ForEach(Console.WriteLine);
+            //Console.WriteLine(System.Environment.NewLine + "Transaction on the account:" );
+            //List<String> latestTrans = atm.getFiveLatestTransactions("55555");
+            //latestTrans.ForEach(Console.WriteLine);
 
             // Test the database
             //DbFacade dbFacade = new DbFacade();
             //DateTime dt = dbFacade.MakeTransaction();
+
+            var r = atm.GetHolderAccounts();
+            r.ForEach(Console.WriteLine);
         }
     }
 }
