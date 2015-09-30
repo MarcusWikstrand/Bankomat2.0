@@ -39,7 +39,8 @@ namespace Tester
 
             }
 
-            atm.getFiveLatestTransactions("51425555555");
+            List<String> latestTrans = atm.getFiveLatestTransactions("51425555555");
+            latestTrans.ForEach(Console.WriteLine);
         }
     }
 }
