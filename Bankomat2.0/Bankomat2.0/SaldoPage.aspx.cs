@@ -51,7 +51,7 @@ namespace Bankomat2._0
             ListTransactions.Items.Clear();
 
             // Get the total from this account
-            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue).ToString();
+            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue.ToString()).ToString();
             // Show the Account name info
             lblShowAccount.Visible = true;
             lblSummaSaldo.Visible = true;
