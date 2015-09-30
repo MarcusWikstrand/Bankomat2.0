@@ -5,14 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div>
-        <asp:ImageButton ID="Reduce100" runat="server" ImageUrl="~/images/minus.jpg" OnClick="Reduce100_Click" />
-        <asp:Image ID="img100" runat="server" ImageUrl="~/images/100 kronor ny sedel 1.jpg" />
-        <asp:ImageButton ID="Add100" runat="server" ImageUrl="~/images/plus.jpg" OnClick="Add100_Click" /><br />
+        <asp:ImageButton ID="Reduce100" runat="server" ImageUrl="~/images/minus.jpg" OnClick="Reduce100_Click" Width="100px"/>
+        <asp:Image ID="img100" runat="server" ImageUrl="~/images/100 kronor ny sedel 1.jpg" Width="200px"/>
+        <asp:ImageButton ID="Add100" runat="server" ImageUrl="~/images/plus.jpg" OnClick="Add100_Click" Width="100px"/><br />
 
 
-        <asp:ImageButton ID="Reduce500" runat="server" ImageUrl="~/images/minus.jpg" OnClick="Reduce500_Click" />
-        <asp:Image ID="img500" runat="server" ImageUrl="~/images/500 kronor ny sedel 1.jpg" />
-        <asp:ImageButton ID="Add500" runat="server" ImageUrl="~/images/plus.jpg" OnClick="Add500_Click" />
+        <asp:ImageButton ID="Reduce500" runat="server" ImageUrl="~/images/minus.jpg" OnClick="Reduce500_Click" Width="100px"/>
+        <asp:Image ID="img500" runat="server" ImageUrl="~/images/500 kronor ny sedel 1.jpg" Width="200px"/>
+        <asp:ImageButton ID="Add500" runat="server" ImageUrl="~/images/plus.jpg" OnClick="Add500_Click" Width="100px"/>
+
+        <br />
 
     </div>
     <div>
