@@ -9,15 +9,16 @@
     </asp:ContentPlaceHolder>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="~/BankomatStyle.css" />
-
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="logo">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/images/Logo.jpeg.jpg" Width="25%" />
+            <h1>Bankomaten</h1>
         </div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+        <div class="makeblock">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>
