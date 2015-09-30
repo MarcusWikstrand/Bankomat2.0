@@ -20,8 +20,11 @@ namespace Tester
             ATM atm = new ATM(1337);
 
             // Tests the auth
-            bool authResult = atm.Authenticate("55555", 2222);
+            bool authResult = atm.Authenticate("55555", 1111);
             Console.WriteLine($"Login attempt, Outcome: {authResult}");
+
+            //var res = atm.GetHolderAccounts();
+            //res.ForEach(Console.WriteLine);
 
             // Tests the withdrawal
             //if (authResult == true)
