@@ -32,7 +32,7 @@ namespace Bankomat2._0
             {
                 try
                 {
-                    atm.Authenticate(cardNumber, int.Parse(this.PIN.Text));
+                    atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
                     // Mke sure we have udated ATM
                     Session["ATM"] = atm;
                     // Gå vidare till
@@ -162,7 +162,7 @@ namespace Bankomat2._0
 
         protected void MakeItSo_Click(object sender, EventArgs e)
         {
-            cardNumber = this.DropDownListCards.SelectedItem.Value.ToString();
+            Session["cardNumber"] = this.DropDownListCards.SelectedItem.Value.ToString();
             // Make pin visible
             EnablePIN();
 
