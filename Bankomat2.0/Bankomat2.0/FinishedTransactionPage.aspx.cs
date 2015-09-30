@@ -15,6 +15,13 @@ namespace Bankomat2._0
 
         }
 
+        protected void Menu_Click(object sender, EventArgs e)
+        {
+            // Mke sure we have udated ATM
+            Session["ATM"] = atm;
+            Server.Transfer("MainMenu.aspx");
+        }
+
         protected void Saldo_Click(object sender, EventArgs e)
         {
             // Mke sure we have udated ATM
