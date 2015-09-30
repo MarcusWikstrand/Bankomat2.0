@@ -36,10 +36,12 @@ namespace Bankomat2._0
             PaymentCard pc = paymentCards[card];
             if (pc.Pin == pin)
             {
+                dbFacade.RegisterAuth(pin, true, clientID, card, Bic);
                 return true;
             }
             else
             {
+                dbFacade.RegisterAuth(pin, false, clientID, card, Bic);
                 pc.RegisterFailedAuthAttempt();
                 return false;
             }

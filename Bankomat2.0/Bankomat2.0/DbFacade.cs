@@ -150,6 +150,33 @@ namespace Bankomat2._0
             return results;
         }
 
+        public void RegisterAuth(int pin, bool outcome, int clientId, string cardNumber, string bic)
+        {
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.StoredProcedure;
+
+            myCommand.CommandText = $"sp_RegisterAuthentification";
+
+            myCommand.Parameters.Add("@Pin", SqlDbType.Int);
+            myCommand.Parameters.Add("@Outcome", SqlDbType.Bit);
+            myCommand.Parameters.Add("@Client", SqlDbType.Int);
+            myCommand.Parameters.Add("@PaymentCard", SqlDbType.VarChar);
+            myCommand.Parameters.Add("@Bank", SqlDbType.VarChar);
+
+            myCommand.Parameters["@Pin"].Value = pin;
+            myCommand.Parameters["@Outcome"].Value = outcome;
+            myCommand.Parameters["@Client"].Value = clientId;
+            myCommand.Parameters["@PaymentCard"].Value = cardNumber;
+            myCommand.Parameters["@Bank"].Value = bic;
+
+            myCommand.ExecuteNonQuery();
+        }
+
         public List<Transaction> Transactions(string accountNumber)
         {
             List<Transaction> results = new List<Transaction>();
