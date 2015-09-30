@@ -47,7 +47,7 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[selectedCard];
             Customer c = pc.Holder;
-            List<string> cAccounts = (from account in Accounts where account.Value.Holders.Contains(c) select account.Key) as List<string>;
+            List<string> cAccounts = (from account in accounts where account.Value.Holders.Contains(c) select account.Key) as List<string>;
 
             return cAccounts;
         }
@@ -77,7 +77,7 @@ namespace Bankomat2._0
 
             foreach (Account a in customerData.ElementAt(1))
             {
-                accounts.Add(a.Number, a);
+                Accounts.Add(a.Number, a);
             }
 
             foreach (PaymentCard pc in customerData.ElementAt(2))
