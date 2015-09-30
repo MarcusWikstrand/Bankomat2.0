@@ -229,72 +229,58 @@ namespace Bankomat2._0
 
         public List<Transaction> Transactions(string account)
         {
-            List<Transaction> results = new List<Transaction>();
-
-            SqlConnection myConnection = new SqlConnection();
-            myConnection.ConnectionString = connectionString;
-
-            myConnection.Open();
-            SqlCommand myCommand = new SqlCommand();
-            myCommand.Connection = myConnection;
-            myCommand.CommandType = CommandType.StoredProcedure;
-
-            myCommand.CommandText = $"sp_GetTransactions";
-
-            // params
-            myCommand.Parameters.Add("@Account", SqlDbType.Int);
-            myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
-
-            // Output
-            myCommand.Parameters.Add("@Amount", SqlDbType.Decimal);
-            myCommand.Parameters["@Amount"].Direction = ParameterDirection.Output;
-            myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
-            myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
-
-            var result = myCommand.ExecuteNonQuery();
-
-            var am = myCommand.Parameters["@Amount"].Value;
-            var tranTime = myCommand.Parameters["@TransactionTime"].Value;
-
-            //using (result)
-            //{
-            //    while (result.Read())
-            //    {
-            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
-            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
-
-            //        Transaction t = new Transaction(amount, time);
-            //        results.Add(t);
-            //    }
-            //}
-
-            return results;
-
-
             //List<Transaction> results = new List<Transaction>();
 
             //SqlConnection myConnection = new SqlConnection();
             //myConnection.ConnectionString = connectionString;
+
             //myConnection.Open();
             //SqlCommand myCommand = new SqlCommand();
             //myCommand.Connection = myConnection;
-            //myCommand.CommandText = $"SELECT Amount, TransactionTime FROM AccountTransaction WHERE Account = {accountNumber}";
+            //myCommand.CommandType = CommandType.StoredProcedure;
 
-            //var result = myCommand.ExecuteReader();
+            //myCommand.CommandText = $"sp_GetTransactions";
 
-            //using (result)
-            //{
-            //    while (result.Read())
-            //    {
-            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
-            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+            //// params
+            //myCommand.Parameters.Add("@Account", SqlDbType.Int);
+            //myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
 
-            //        Transaction t = new Transaction(amount, time);
-            //        results.Add(t);
-            //    }
-            //}
+            //// Output
+            //myCommand.Parameters.Add("@Amount", SqlDbType.Decimal);
+            //myCommand.Parameters["@Amount"].Direction = ParameterDirection.Output;
+            //myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
+            //myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
 
-            //return results;
+            //var result = myCommand.ExecuteNonQuery();
+
+            //var am = myCommand.Parameters["@Amount"].Value;
+            //var tranTime = myCommand.Parameters["@TransactionTime"].Value;
+
+
+            List<Transaction> results = new List<Transaction>();
+
+            SqlConnection myConnection = new SqlConnection();
+            myConnection.ConnectionString = connectionString;
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand();
+            myCommand.Connection = myConnection;
+            myCommand.CommandText = $"SELECT Amount, TransactionTime FROM AccountTransaction WHERE Account = {account}";
+
+            var result = myCommand.ExecuteReader();
+
+            using (result)
+            {
+                while (result.Read())
+                {
+                    decimal amount = Decimal.Parse(result["Amount"].ToString());
+                    DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+
+                    Transaction t = new Transaction(amount, time);
+                    results.Add(t);
+                }
+            }
+
+            return results;
         }
 
         public DateTime MakeTransaction(string account, decimal amount, bool outcome, int client, string cardNumber, string bank)
