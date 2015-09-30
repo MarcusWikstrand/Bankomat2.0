@@ -5,6 +5,10 @@
     color: #1C2026;
 }
 
+.wrapper {
+    width: 100%;
+}
+
 .logo {
     font-family: Lato, sans-serif;
     font-weight: 400;
@@ -14,13 +18,13 @@
 p, div, span, input, label {
     font-family: Lato, sans-serif;
     font-weight: 400;
+    color: #1C2026;
 }
 
 .highlight {
     font-family: Lato, sans-serif;
     font-weight: 700;
 }
-
 
 .makeblock {
     display: block;
@@ -52,4 +56,8 @@ p, div, span, input, label {
 
 .yellowbut {
      background-color: #FCEC25;
+}
+
+.centrera {
+   text-align:center;
 }

@@ -12,12 +12,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="logo">
-            <h1>Bankomaten</h1>
-        </div>
-        <div class="makeblock">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="wrapper">
+            <div class="logo">
+                <h1>Bankomaten</h1>
+            </div>
+            <div class="makeblock">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
 </body>
