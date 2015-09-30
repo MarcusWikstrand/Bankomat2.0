@@ -91,11 +91,12 @@ namespace Bankomat2._0
                         {
                             reservedBanknotes.Add(bn);
                             currentlyAvailableBanknotes.Remove(bn);
-                        } else
+                        }
+                        else
                         {
                             numOfThisDenomination--;
                         }
-                        
+
                     }
 
                     remainingAmount -= (numOfThisDenomination * denomination);
@@ -107,7 +108,7 @@ namespace Bankomat2._0
             {
                 currentlyAvailableBanknotes.AddRange(reservedBanknotes);
                 throw new Exception(@"Tekniskt fel (dvs. inte tillräckligt med pengar i maskinen (don't panic))");
-            } 
+            }
 
             return reservedBanknotes;
         }
@@ -133,7 +134,8 @@ namespace Bankomat2._0
                 {
                     EnteredCardNumber = cardNumber;
                     authResult = true;
-                } else
+                }
+                else
                 {
                     throw new Exception("Incorrect pin");
                 }
@@ -184,6 +186,6 @@ namespace Bankomat2._0
             return bank.GetLatestFiveTransactions(accountNumber, clientId);
         }
 
-        private string EnteredCardNumber { get; set; } 
+        private string EnteredCardNumber { get; set; }
     }
 }

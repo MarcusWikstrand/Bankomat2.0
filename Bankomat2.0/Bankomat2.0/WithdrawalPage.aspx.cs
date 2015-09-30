@@ -9,11 +9,21 @@ namespace Bankomat2._0
 {
     public partial class WithdrawalPage : System.Web.UI.Page
     {
-        ATM atm = new ATM(123456789);
-
+        public ATM atm;
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["ATM"] != null)
+            {
+                // Vi har en ATM
+
+                atm = (ATM)Session["ATM"];
+            }
+            else
+            {
+                atm = new ATM(123456789);
+                Session["ATM"] = atm;
+            }
         }
 
         protected void Saldo_Click(object sender, EventArgs e)

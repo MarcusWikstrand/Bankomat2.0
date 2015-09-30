@@ -26,11 +26,15 @@ namespace Bankomat2._0
 
         protected void ButtonConfirm_Click(object sender, EventArgs e)
         {
+            // Mke sure we have udated ATM
+            Session["ATM"] = atm;
             if (cardNumber != null)
             {
                 try
                 {
                     atm.Authenticate(cardNumber, int.Parse(this.PIN.Text));
+                    // Mke sure we have udated ATM
+                    Session["ATM"] = atm;
                     // Gå vidare till
                     Server.Transfer("MainMenu.aspx");
                 }
@@ -161,6 +165,7 @@ namespace Bankomat2._0
             cardNumber = this.DropDownListCards.SelectedItem.Value.ToString();
             // Make pin visible
             EnablePIN();
+
         }
     }
 }

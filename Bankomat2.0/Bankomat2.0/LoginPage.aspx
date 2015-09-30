@@ -1,12 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="Bankomat2._0.LoginPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style2 {
-            height: 258px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="makeblock">
 
@@ -26,7 +21,10 @@
         <asp:Button ID="Button7" runat="server" Text="7" Width="30px" Visible="False" OnClick="Button7_Click" />
         <asp:Button ID="Button8" runat="server" Text="8" Width="30px" Visible="False" OnClick="Button8_Click" />
         <asp:Button ID="Button9" runat="server" Text="9" Width="30px" Visible="False" OnClick="Button9_Click" />
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button10" runat="server" Text="0" Width="30px" Visible="False" OnClick="Button10_Click" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Backspace" runat="server" Text="&lt;-" Width="30px" Visible="False" OnClick="Backspace_Click" />
         <br />
         <asp:Button ID="ButtonConfirm" runat="server" Text="Bekräfta" OnClick="ButtonConfirm_Click" Visible="False" Width="90px"/>
