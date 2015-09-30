@@ -99,6 +99,19 @@ namespace Bankomat2._0
             return holders;
         }
 
+        public bool IsHolder(Customer c)
+        {
+            foreach (Customer cust in holders)
+            {
+                if (cust.Ssn == c.Ssn)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         //public method that returns the five latest transactions.
         public List<String> latestFiveTransactions()
         {

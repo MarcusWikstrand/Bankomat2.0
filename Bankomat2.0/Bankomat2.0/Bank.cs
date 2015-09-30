@@ -51,8 +51,16 @@ namespace Bankomat2._0
         {
             PaymentCard pc = paymentCards[selectedCard];
             Customer c = pc.Holder;
-            List<string> cAccounts = (from account in accounts where account.Value.getHolders().Contains(c) select account.Key) as List<string>;
+            List<string> cAccounts = new List<string>();
 
+            foreach (Account a in accounts.Values)
+            {
+                if (a.IsHolder(c))
+                {
+                    cAccounts.Add(a.Number);
+                }
+            }
+            
             return cAccounts;
         }
 

@@ -227,32 +227,71 @@ namespace Bankomat2._0
             myCommand.ExecuteNonQuery();
         }
 
-        public List<Transaction> Transactions(string accountNumber)
+        public List<Transaction> Transactions(string account)
         {
             List<Transaction> results = new List<Transaction>();
 
-            SqlConnection myConnection = new SqlConnection();
-            myConnection.ConnectionString = connectionString;
-            myConnection.Open();
-            SqlCommand myCommand = new SqlCommand();
-            myCommand.Connection = myConnection;
-            myCommand.CommandText = $"SELECT Amount, TransactionTime FROM AccountTransaction WHERE Account = {accountNumber}";
+            //SqlConnection myConnection = new SqlConnection();
+            //myConnection.ConnectionString = connectionString;
 
-            var result = myCommand.ExecuteReader();
+            //myConnection.Open();
+            //SqlCommand myCommand = new SqlCommand();
+            //myCommand.Connection = myConnection;
+            //myCommand.CommandType = CommandType.StoredProcedure;
 
-            using (result)
-            {
-                while (result.Read())
-                {
-                    decimal amount = Decimal.Parse(result["Amount"].ToString());
-                    DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+            //myCommand.CommandText = $"sp_GetTransactions";
 
-                    Transaction t = new Transaction(amount, time);
-                    results.Add(t);
-                }
-            }
+            //// params
+            //myCommand.Parameters.Add("@Account", SqlDbType.Int);
+            //myCommand.Parameters["@Account"].Value = Convert.ToInt32(account);
+
+            //// Output
+            //myCommand.Parameters.Add("@Amount", SqlDbType.Decimal);
+            //myCommand.Parameters["@Amount"].Direction = ParameterDirection.Output;
+            //myCommand.Parameters.Add("@TransactionTime", SqlDbType.DateTime);
+            //myCommand.Parameters["@TransactionTime"].Direction = ParameterDirection.Output;
+
+            //var result = myCommand.ExecuteReader();
+
+            //using (result)
+            //{
+            //    while (result.Read())
+            //    {
+            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
+            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+
+            //        Transaction t = new Transaction(amount, time);
+            //        results.Add(t);
+            //    }
+            //}
 
             return results;
+
+
+            //List<Transaction> results = new List<Transaction>();
+
+            //SqlConnection myConnection = new SqlConnection();
+            //myConnection.ConnectionString = connectionString;
+            //myConnection.Open();
+            //SqlCommand myCommand = new SqlCommand();
+            //myCommand.Connection = myConnection;
+            //myCommand.CommandText = $"SELECT Amount, TransactionTime FROM AccountTransaction WHERE Account = {accountNumber}";
+
+            //var result = myCommand.ExecuteReader();
+
+            //using (result)
+            //{
+            //    while (result.Read())
+            //    {
+            //        decimal amount = Decimal.Parse(result["Amount"].ToString());
+            //        DateTime time = DateTime.Parse(result["TransactionTime"].ToString());
+
+            //        Transaction t = new Transaction(amount, time);
+            //        results.Add(t);
+            //    }
+            //}
+
+            //return results;
         }
 
         public DateTime MakeTransaction(string account, decimal amount, bool outcome, int client, string cardNumber, string bank)
