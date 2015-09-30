@@ -28,6 +28,7 @@ namespace Bankomat2._0
                 Balance = newBalance;
                 Transaction newT = new Transaction(amount, this);
                 transactions.Add(newT);
+                DbFacade db = DbFacade.GetInstance();
 
                 return true;
             }

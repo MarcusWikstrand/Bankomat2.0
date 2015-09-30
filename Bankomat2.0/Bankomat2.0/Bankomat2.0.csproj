@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreateDB.sql" />
     <Content Include="images\100 kronor ny sedel 1.jpg" />
     <Content Include="images\500 kronor ny sedel 1.jpg" />
     <Content Include="images\Logo.jpeg.jpg" />

@@ -20,15 +20,15 @@ namespace Tester
             ATM atm = new ATM(1337);
 
             // Tests the auth
-            bool authResult = atm.Authenticate("55555", 1111);
-            Console.WriteLine($"Login attempt, Outcome: {authResult}");
+            //bool authResult = atm.Authenticate("55555", 1111);
+            //Console.WriteLine($"Login attempt, Outcome: {authResult}");
 
-            //Tests the withdrawal
+            ////Tests the withdrawal
             //if (authResult == true)
             //{
             //    try
             //    {
-            //        int amount = -300;
+            //        int amount = 300;
             //        Console.WriteLine($"Balance before transaction " + atm.ViewConnectedAccountBalance());
             //        Console.WriteLine($"Trying to withdraw {amount}:-");
             //        atm.Withdraw(amount);
@@ -46,8 +46,10 @@ namespace Tester
             //latestTrans.ForEach(Console.WriteLine);
 
             // Test the database
-            //DbFacade dbFacade = new DbFacade();
-            //dbFacade.MakeTransaction();
+            DbFacade dbFacade = new DbFacade();
+            DateTime dt = dbFacade.MakeTransaction();
+
+            Console.WriteLine($"Result: {dt}");
         }
     }
 }
