@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
     <div>
-        Welcome!<asp:Button ID="ToLogin" runat="server" Text="Begin" OnClick="ToLogin_Click" />
+        <br />
+        <asp:Button ID="ToLogin" runat="server" Text="Börja fejkomat upplevelse" OnClick="ToLogin_Click" />
     </div>    
     
 </asp:Content>

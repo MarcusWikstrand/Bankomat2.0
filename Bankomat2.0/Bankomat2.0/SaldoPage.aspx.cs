@@ -32,5 +32,23 @@ namespace Bankomat2._0
             
 
         }
+
+        protected void ListOfAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // store the selected account name
+            Session["selectedAccountName"] = ListOfAccounts.SelectedValue;
+
+            // Get the total from this account
+            lblSummaSaldo.Text = atm.ViewBalance(Session["selctedAccountName"].ToString()).ToString();
+            // Show the Account name info
+            lblShowAccount.Visible = true;
+            lblSummaSaldo.Visible = true;
+            lblValuta.Visible = true;
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("MainMenu.aspx");
+        }
     }
 }
