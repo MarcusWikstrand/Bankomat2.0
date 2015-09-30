@@ -8,7 +8,7 @@
         </p>
         <p>
 
-            <asp:Button ID="ButtonKvitto" runat="server" Text="Kvitto" />
+            <asp:Button ID="ButtonKvitto" runat="server" Text="Kvitto" OnClick="Menu_Click" />
 
         </p>
         <p>

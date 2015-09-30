@@ -78,6 +78,7 @@
     <Content Include="MainMenu.aspx" />
     <Content Include="packages.config" />
     <Content Include="Default.Master" />
+    <Content Include="ReceiptPage.aspx" />
     <Content Include="SaldoPage.aspx" />
     <Content Include="WaitingPage.aspx" />
     <Content Include="WelcomePage.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptPage.aspx.cs">
+      <DependentUpon>ReceiptPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReceiptPage.aspx.designer.cs">
+      <DependentUpon>ReceiptPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SaldoPage.aspx.cs">
       <DependentUpon>SaldoPage.aspx</DependentUpon>
