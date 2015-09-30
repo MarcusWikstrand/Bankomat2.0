@@ -70,6 +70,8 @@
     <Content Include="images\500 kronor ny sedel 1.jpg" />
     <Content Include="images\Logo.jpeg.jpg" />
     <Content Include="BankomatStyle.css" />
+    <Content Include="images\minus.jpg" />
+    <Content Include="images\plus.jpg" />
     <Content Include="LoginPage.aspx" />
     <Content Include="MainMenu.aspx" />
     <Content Include="packages.config" />

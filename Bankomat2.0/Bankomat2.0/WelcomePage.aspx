@@ -2,4 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
+    <div>
+        Welcome!<asp:Button ID="ToLogin" runat="server" Text="Begin" OnClick="ToLogin_Click" />
+    </div>    
+    
 </asp:Content>

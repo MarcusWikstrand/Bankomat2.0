@@ -10,7 +10,7 @@ namespace Bankomat2._0
         private List<Transaction> transactions;
         private List<Customer> holders;
         private List<PaymentCard> connectedCards;
-
+        private string TypeName;
         public Account(string number, Customer holder)
         {
             transactions = new List<Transaction>();
@@ -18,6 +18,19 @@ namespace Bankomat2._0
             connectedCards = new List<PaymentCard>();
             Number = number;
             holders.Add(holder);
+            SetName();
+        }
+        public void SetName(string name = null)
+        {
+            if (name == null)
+            {
+                this.TypeName = Number.ToString();
+            }
+            else
+            {
+                this.TypeName = name;
+            }
+            
         }
 
         public bool MakeTransaction(decimal amount)
@@ -35,7 +48,7 @@ namespace Bankomat2._0
             {
                 throw new Exception("Otillräkliga tillgångar på kontot.");
             }
-            
+
         }
 
         /// <summary>
@@ -45,11 +58,12 @@ namespace Bankomat2._0
         {
 
             DateTime today = DateTime.Now.Date;
-            
-            
+
+
         }
 
-        public string Number {
+        public string Number
+        {
             get;
             private set;
         }
@@ -69,13 +83,13 @@ namespace Bankomat2._0
         public List<String> latestFiveTransactions()
         {
             List<String> lastFive = new List<String>();
-            List <Transaction> myTransaction = transactions.OrderByDescending(i => i.Time).Take(5).ToList();
+            List<Transaction> myTransaction = transactions.OrderByDescending(i => i.Time).Take(5).ToList();
             foreach (var transaction in myTransaction)
             {
                 lastFive.Add(transaction.ToString());
             }
             return lastFive;
         }
-        
+
     }
 }
