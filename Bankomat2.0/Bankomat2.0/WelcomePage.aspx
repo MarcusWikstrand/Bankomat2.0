@@ -10,8 +10,8 @@
     </div>
     <div class= "centrera">
         <asp:Button ID="ToLogin" runat="server" class="labelbuttons" Text="KÖR!" OnClick="ToLogin_Click" />
-    </div>
-
+    </div>    
+    
 
 
 </asp:Content>

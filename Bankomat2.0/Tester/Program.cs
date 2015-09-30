@@ -20,7 +20,7 @@ namespace Tester
             ATM atm = new ATM(1337);
 
             // Tests the auth
-            bool authResult = atm.Authenticate("55555", 1111);
+            bool authResult = atm.Authenticate("55555", 2222);
             Console.WriteLine($"Login attempt, Outcome: {authResult}");
 
             //Tests the withdrawal
@@ -50,8 +50,8 @@ namespace Tester
             //DbFacade dbFacade = new DbFacade();
             //DateTime dt = dbFacade.MakeTransaction();
 
-            var r = atm.GetHolderAccounts();
-            r.ForEach(Console.WriteLine);
+            //var r = atm.GetHolderAccounts();
+            //r.ForEach(Console.WriteLine);
         }
     }
 }

@@ -41,5 +41,5 @@
         <asp:ListItem>77777</asp:ListItem>
         <asp:ListItem>88888</asp:ListItem>
         </asp:DropDownList>
-    <asp:Button ID="MakeItSo" runat="server" OnClick="MakeItSo_Click" Text="OK" />
+    <asp:Button ID="MakeItSo" runat="server" OnClick="MakeItSo_Click" Text="Den glider in..." />
 </asp:Content>
