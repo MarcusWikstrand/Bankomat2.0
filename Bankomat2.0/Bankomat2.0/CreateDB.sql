@@ -74,6 +74,17 @@ create table BalanceAccess
 )
 go
 
+create table TransactionAccess
+(
+  TransactionAccessId int IDENTITY(1,1) Primary Key,
+  TransactionAccessTime DateTime not null DEFAULT GETDATE(),
+  Client int not null,
+  PaymentCard varchar(5) FOREIGN KEY REFERENCES PaymentCard(CardNumber),
+  AccountTransaction int FOREIGN KEY REFERENCES AccountTransaction(TransactionId),
+  Bank varchar(8) FOREIGN KEY REFERENCES Bank(Bic)
+)
+go
+
 create table BankAuthentication
 (
   AuhenticationId int IDENTITY(1,1) Primary Key,
@@ -215,3 +226,127 @@ begin
 END
 go
 
+create procedure [dbo].[sp_RegisterBalanceAccess]
+	-- Add the parameters for the stored procedure here
+	@Account int,
+    @Client int,
+    @PaymentCard varchar(5),
+    @Bank varchar(8)
+as
+begin
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	DECLARE @ErrMsg varchar(4000);
+
+	BEGIN TRY
+	  PRINT 'Maing an auth'
+	  BEGIN TRANSACTION [myTran]
+		INSERT INTO BalanceAccess(Account, Client, PaymentCard, Bank) 
+		VALUES (@Account, @Client, @PaymentCard, @Bank)
+	  COMMIT TRANSACTION [myTran]
+	  PRINT 'Transaction completed.'
+	END TRY
+	BEGIN CATCH
+	  IF(@@TRANCOUNT>0)
+	  BEGIN
+		--@ErrMsg = 'Test'
+		PRINT ERROR_MESSAGE()
+		PRINT 'Error, transaction will rollback'	
+		ROLLBACK TRANSACTION [myTran]
+		PRINT 'Done.'
+	  END
+	END CATCH
+
+	SET NOCOUNT OFF
+END
+go
+
+create procedure [dbo].[sp_GetTransactions]
+	-- Add the parameters for the stored procedure here
+	@Account int,
+	@Amount decimal output,
+	@TransactionTime datetime output
+as
+begin
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	DECLARE @ErrMsg varchar(4000);
+
+	BEGIN TRY
+	  PRINT 'Maing an auth'
+	  BEGIN TRANSACTION [myTran]
+		DECLARE @tranID int
+		DECLARE @Client int
+		DECLARE @pc varchar(5)
+		DECLARE @Bank varchar(8)
+
+		SELECT @tranId=TransactionId, @Client=Client, @pc=PaymentCard, @Bank=Bank, @Amount=Amount, @TransactionTime=TransactionTime FROM AccountTransaction WHERE Account = @Account;
+
+		INSERT INTO TransactionAccess(AccountTransaction, Client, PaymentCard, Bank) 
+		VALUES (@tranId, @Client, @pc, @Bank)
+
+	  COMMIT TRANSACTION [myTran]
+	  PRINT 'Transaction completed.'
+	END TRY
+	BEGIN CATCH
+	  IF(@@TRANCOUNT>0)
+	  BEGIN
+		--@ErrMsg = 'Test'
+		PRINT ERROR_MESSAGE()
+		PRINT 'Error, transaction will rollback'	
+		ROLLBACK TRANSACTION [myTran]
+		PRINT 'Done.'
+	  END
+	END CATCH
+
+	SET NOCOUNT OFF
+END
+go
+
+--INSERT INTO TransactionAccess(AccountTransaction, Client, PaymentCard, Bank) 
+--		VALUES (@Transaction, @Client, @PaymentCard, @Bank)
+
+
+--create procedure [dbo].[sp_RegisterTransactionAccess]
+--	-- Add the parameters for the stored procedure here
+--	@Transaction int,
+--    @Client int,
+--    @PaymentCard varchar(5),
+--    @Bank varchar(8)
+--as
+--begin
+--	-- SET NOCOUNT ON added to prevent extra result sets from
+--	-- interfering with SELECT statements.
+--	SET NOCOUNT ON;
+
+--    -- Insert statements for procedure here
+--	DECLARE @ErrMsg varchar(4000);
+
+--	BEGIN TRY
+--	  PRINT 'Maing an auth'
+--	  BEGIN TRANSACTION [myTran]
+--		INSERT INTO TransactionAccess(AccountTransaction, Client, PaymentCard, Bank) 
+--		VALUES (@Transaction, @Client, @PaymentCard, @Bank)
+--	  COMMIT TRANSACTION [myTran]
+--	  PRINT 'Transaction completed.'
+--	END TRY
+--	BEGIN CATCH
+--	  IF(@@TRANCOUNT>0)
+--	  BEGIN
+--		--@ErrMsg = 'Test'
+--		PRINT ERROR_MESSAGE()
+--		PRINT 'Error, transaction will rollback'	
+--		ROLLBACK TRANSACTION [myTran]
+--		PRINT 'Done.'
+--	  END
+--	END CATCH
+
+--	SET NOCOUNT OFF
+--END
+--go
