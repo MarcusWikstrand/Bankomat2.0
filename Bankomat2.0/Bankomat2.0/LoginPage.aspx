@@ -3,39 +3,45 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="makeblock">
-
+    <div class="makeblock centrera">
+        <div class="centrera">
         <asp:Label ID="lblHeader" runat="server" Text="Ange din PIN-kod" Visible="False"></asp:Label>
-        <br />
-        <asp:TextBox ID="PIN" runat="server" OnTextChanged="TextBox1_TextChanged" Visible="False" Width="80px"></asp:TextBox>
+        </div>
+        <asp:TextBox ID="PIN" runat="server" OnTextChanged="TextBox1_TextChanged" Visible="False" class="labelbuttons"></asp:TextBox>
         <asp:Label ID="lblWrongPIN" runat="server" ForeColor="#FF1919" Text="Felaktig PIN kod" Visible="False"></asp:Label>
-        <br />
-        <asp:Button ID="Button1" runat="server" Text="1" Width="30px" Visible="False" OnClick="Button1_Click" />
-        <asp:Button ID="Button2" runat="server" Text="2" Width="30px" TabIndex="2" Visible="False" OnClick="Button2_Click" />
-        <asp:Button ID="Button3" runat="server" Text="3" Width="30px" Visible="False" OnClick="Button3_Click" />
-        <br />
-        <asp:Button ID="Button4" runat="server" Text="4" Width="30px" Visible="False" OnClick="Button4_Click" />
-        <asp:Button ID="Button5" runat="server" Text="5" Width="30px" Visible="False" OnClick="Button5_Click" />
-        <asp:Button ID="Button6" runat="server" Text="6" Width="30px" Visible="False" OnClick="Button6_Click" />
-        <br />
-        <asp:Button ID="Button7" runat="server" Text="7" Width="30px" Visible="False" OnClick="Button7_Click" />
-        <asp:Button ID="Button8" runat="server" Text="8" Width="30px" Visible="False" OnClick="Button8_Click" />
-        <asp:Button ID="Button9" runat="server" Text="9" Width="30px" Visible="False" OnClick="Button9_Click" />
-        <br />
-        <asp:Button ID="ButtonConfirm" runat="server" Text="OK" OnClick="ButtonConfirm_Click" Visible="False" Width="30px"/>
-        <asp:Button ID="Button10" runat="server" Text="0" Width="30px" Visible="False" OnClick="Button10_Click" />
-        <asp:Button ID="Backspace" runat="server" Text="&lt;-" Width="30px" Visible="False" OnClick="Backspace_Click" />
-        <br />
-        <br />
-        <asp:Button ID="ButtonCancel" runat="server" Text="Avbryt" Width="90px" OnClick="ButtonCancel_Click" Visible="False"/>
+        <div>
+            <asp:Button ID="Button1" runat="server" class="labelbuttons greybut" Text="1" Visible="False" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" class="labelbuttons greybut" Text="2" TabIndex="2" Visible="False" OnClick="Button2_Click" />
+            <asp:Button ID="Button3" runat="server" class="labelbuttons greybut" Text="3" Visible="False" OnClick="Button3_Click" />
+        </div>
+        <div>
+            <asp:Button ID="Button4" runat="server" class="labelbuttons greybut" Text="4" Visible="False" OnClick="Button4_Click" />
+            <asp:Button ID="Button5" runat="server" class="labelbuttons greybut" Text="5" Visible="False" OnClick="Button5_Click" />
+            <asp:Button ID="Button6" runat="server" class="labelbuttons greybut" Text="6" Visible="False" OnClick="Button6_Click" />
+        </div>
+        <div>
+            <asp:Button ID="Button7" runat="server" class="labelbuttons greybut" Text="7" Visible="False" OnClick="Button7_Click" />
+            <asp:Button ID="Button8" runat="server" class="labelbuttons greybut" Text="8" Visible="False" OnClick="Button8_Click" />
+            <asp:Button ID="Button9" runat="server" class="labelbuttons greybut" Text="9" Visible="False" OnClick="Button9_Click" />
+        </div>
+
+        <asp:Button ID="Button10" runat="server" class="labelbuttons greybut" Text="0" Visible="False" OnClick="Button10_Click" />
+
+        <asp:Button ID="Backspace" runat="server" class="labelbuttons yellowbut" Text="&lt;-" Visible="False" OnClick="Backspace_Click" />
+
+        <asp:Button ID="ButtonConfirm" runat="server" class="labelbuttons greenbut" Text="OK" OnClick="ButtonConfirm_Click" Visible="False" />
+
+        <asp:Button ID="ButtonCancel" runat="server" class="labelbuttons redbut" Text="Avbryt" OnClick="ButtonCancel_Click" Visible="False" />
         
     </div>
-    <asp:Label ID="lblInsertCard" runat="server" Text="För in ditt kort:"></asp:Label>
-&nbsp;<asp:DropDownList ID="DropDownListCards" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    <div class="centrera">
+        <asp:Label ID="lblInsertCard" runat="server" Text="Stoppa in ditt kort:"></asp:Label>
+    </div>
+    <div class="centrera">
+        <asp:DropDownList ID="DropDownListCards" class="kortin" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem>55555</asp:ListItem>
         <asp:ListItem>66666</asp:ListItem>
         <asp:ListItem>77777</asp:ListItem>
         <asp:ListItem>88888</asp:ListItem>
         </asp:DropDownList>
-    <asp:Button ID="MakeItSo" runat="server" OnClick="MakeItSo_Click" Text="Den glider in..." />
 </asp:Content>

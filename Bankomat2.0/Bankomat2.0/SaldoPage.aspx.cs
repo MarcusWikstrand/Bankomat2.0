@@ -25,10 +25,20 @@ namespace Bankomat2._0
             }
 
             // populate list of accounts.
-            foreach (var accountname in atm.GetHolderAccounts())
+            try
             {
-                ListOfAccounts.Items.Add(accountname);
+                foreach (var accountname in atm.GetHolderAccounts())
+                {
+                    ListOfAccounts.Items.Add(accountname);
+                }
             }
+            catch (Exception ex)
+            {
+                ListOfAccounts.Items.Clear();
+                ListOfAccounts.Items.Add(ex.Message);
+                
+            }
+            
             
 
         }

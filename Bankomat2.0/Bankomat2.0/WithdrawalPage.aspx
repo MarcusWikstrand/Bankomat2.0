@@ -15,6 +15,9 @@
         <asp:ImageButton ID="Add500" runat="server" ImageUrl="~/images/plus.jpg" OnClick="Add500_Click" Width="100px"/>
 
         <br />
+        <asp:Label ID="lblError" runat="server" Visible="False"></asp:Label>
+
+        <br />
 
     </div>
     <div>
