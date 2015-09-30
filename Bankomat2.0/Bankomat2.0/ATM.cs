@@ -22,7 +22,7 @@ namespace Bankomat2._0
 
         public void Withdraw(int withdrawalAmount)
         {
-            if (!BanknotesIsAvailable())
+            if (!BanknotesAvailable())
             {
                 throw new Exception("Tekniskt fel (dvs. Pengarna är slut (dont panic))");
             }
@@ -33,7 +33,7 @@ namespace Bankomat2._0
             }
 
             ReservBanknotes(withdrawalAmount);
-            bank.ConductTransaction(SelectedCardNumber, withdrawalAmount, clientId);
+            bank.ConductTransaction(EnteredCardNumber, withdrawalAmount, clientId);
         }
 
         private bool ValidateWithdrawalAmount(int withdrawalAmount)
@@ -112,7 +112,7 @@ namespace Bankomat2._0
             return reservedBanknotes;
         }
 
-        public bool BanknotesIsAvailable()
+        public bool BanknotesAvailable()
         {
             return (currentlyAvailableBanknotes.Count > 0) ? true : false;
         }
@@ -131,7 +131,7 @@ namespace Bankomat2._0
             {
                 if (bank.Authenticate(cardNumber, pin, clientId))
                 {
-                    SelectedCardNumber = cardNumber;
+                    EnteredCardNumber = cardNumber;
                     authResult = true;
                 } else
                 {
@@ -140,7 +140,7 @@ namespace Bankomat2._0
             }
             catch (Exception)
             {
-                SelectedCardNumber = null;
+                EnteredCardNumber = null;
             }
 
             return authResult;
@@ -148,7 +148,7 @@ namespace Bankomat2._0
 
         public List<string> GetHolderAccounts()
         {
-            return bank.GetHolderAccounts(SelectedCardNumber);
+            return bank.GetHolderAccounts(EnteredCardNumber);
         }
 
         public decimal ViewBalance(string accountNumber)
@@ -158,7 +158,7 @@ namespace Bankomat2._0
 
         public decimal ViewConnectedAccountBalance()
         {
-            return bank.GetConnectedAccountBalance(SelectedCardNumber, clientId);
+            return bank.GetConnectedAccountBalance(EnteredCardNumber, clientId);
         }
 
         private void SeedAtmWithFakeMoney()
@@ -177,16 +177,13 @@ namespace Bankomat2._0
                 currentlyAvailableBanknotes.Add(bn);
             }
         }
-        ////Display the five latest transactions to take place within this specific account.
-        public void getFiveLatestTransactions(string accountNumber)
+
+        ///Display the five latest transactions to take place within this specific account.
+        public List<String> getFiveLatestTransactions(string accountNumber)
         {
-            bank.GetLatestFiveTransactions(accountNumber, clientId);
+            return bank.GetLatestFiveTransactions(accountNumber, clientId);
         }
 
-        #region props
-
-        private string SelectedCardNumber { get; set; } //Tilldelas värdet via forms
-
-        #endregion
+        private string EnteredCardNumber { get; set; } 
     }
 }
