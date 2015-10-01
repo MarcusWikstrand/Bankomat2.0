@@ -105,5 +105,12 @@ namespace Bankomat2._0
             saldo += 500;
             this.SaldoVisning.Text = saldo.ToString();
         }
+
+        protected void Avbryt_Click(object sender, EventArgs e)
+        {
+            // Mke sure we have udated ATM
+            Session["ATM"] = atm;
+            Server.Transfer("WelcomePage.aspx");
+        }
     }
 }

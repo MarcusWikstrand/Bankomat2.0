@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centrera">
         <h2 class="litespace">Vänligen ta dina sedlar!</h2>
+        <p class="litespace">Vill du nu:</p>
         <div>
             <asp:Button ID="ButtonKvitto" runat="server" class="superknapp" Text="Få Kvitto?" />
         </div>

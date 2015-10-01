@@ -4,11 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centrera litespace">
-        <p>Välj konto att se saldo för:</p>
+        <h2 class="litespace">Se saldo</h2>
+        <p class="litespace">Välj konto att se saldo för:</p>
     </div>
     <div class="centrera">
         <asp:ListBox ID="ListOfAccounts" runat="server" CssClass="labelbuttons" OnSelectedIndexChanged="ListOfAccounts_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
-        <asp:Button ID="Back" runat="server" CssClass="labelbuttons yellowbut" OnClick="Back_Click" Text="Tillbaka" />
+        <asp:Button ID="Back" runat="server" CssClass="labelbuttons greybut" OnClick="Back_Click" Text="Tillbaka" />
         <div>
             <asp:Label ID="lblShowAccount" runat="server" Text="Ditt saldo är:" Visible="False"></asp:Label>
             <asp:Label ID="lblSummaSaldo" runat="server" Visible="False"></asp:Label>

@@ -3,8 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="litespace">
-        <p class="centrera">Tryck på knapparna för +  &  -  för respektive valör för att justera belopp att ta ut!</p>
+    <div class="litespace centrera">
+        <h2 class="litespace">Ta ut pengar</h2>
+        <p class="litespace">Tryck på knapparna för +  &  -  för respektive valör för att justera belopp att ta ut!</p>
     </div>
     <div class="centrera">
         <div>
@@ -27,7 +28,9 @@
     <asp:Button ID="SaldoVisning" class="labelbuttons greybut" runat="server" Text="0" />
     </div>
     <div class="centrera">
-        <asp:Button ID="TagUtSumma" class="labelbuttons greybut" runat="server" OnClick="TagUtSumma_Click" Text="Tag ut summa" />
-        <asp:Button ID="Saldo" runat="server" class="labelbuttons greybut" OnClick="Saldo_Click" Text="Saldo" />
+       <asp:Button ID="Avbryt" runat="server" class="labelbuttons greybut"  Text="Avbryt" OnClick="Avbryt_Click" />
+         <asp:Button ID="Saldo" runat="server" class="labelbuttons greybut" OnClick="Saldo_Click" Text="SnabbSaldo" />        
+         <asp:Button ID="TagUtSumma" class="labelbuttons greybut" runat="server" OnClick="TagUtSumma_Click" Text="TA UT" />
     </div>
+    
 </asp:Content>

@@ -5,12 +5,12 @@
     <div class="centrera">
         <p>
 
-            <asp:Label ID="LabelSorry" runat="server" Text="Tyvärr har vi slut på papper!"></asp:Label>
+            <asp:Label ID="LabelSorry" class="litespace" runat="server" Text="Tyvärr har vi slut på papper!"></asp:Label>
 
         </p>
         <p>
 
-            <asp:Button ID="ButtonMenu" runat="server" OnClick="Menu_Click" Text="Tillbaka till menyn" />
+            <asp:Button ID="ButtonMenu" class="labelbuttons greybut" runat="server" OnClick="Menu_Click" Text="Tillbaka till menyn" />
 
         </p>
     </div>
