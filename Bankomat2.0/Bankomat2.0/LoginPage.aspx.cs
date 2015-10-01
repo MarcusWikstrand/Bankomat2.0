@@ -76,7 +76,8 @@ namespace Bankomat2._0
         public void EnablePIN()
         {
             PIN.Visible = true;
-            lblHeader.Text = "Kort Läst!";
+            lblHeader.Text = "Kort Läst! Fyll nu i din PIN-kod!";
+            lblHeader.Visible = true;
             Button1.Visible = true;
             Button2.Visible = true;
             Button3.Visible = true;

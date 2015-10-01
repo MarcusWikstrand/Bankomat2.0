@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="centrera">
-        <asp:Label ID="lblInsertCard" runat="server" Text="Stoppa in ditt kort:"></asp:Label>
+        <asp:Label ID="lblInsertCard" runat="server" Text="Stoppa in ditt kort nedan:"></asp:Label>
     </div>
     <div class="centrera radpaddy">
         <asp:Label ID="Label1" runat="server" Text="v"></asp:Label>
