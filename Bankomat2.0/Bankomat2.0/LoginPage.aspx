@@ -10,7 +10,7 @@
         <div class="centrera litespace">
         <asp:TextBox ID="PIN" runat="server" OnTextChanged="TextBox1_TextChanged" Visible="False" class="labelbuttons"></asp:TextBox>
         <br />
-        <asp:Label ID="lblWrongPIN" runat="server" ForeColor="#FF1919" Text="Felaktig PIN kod" Visible="False"></asp:Label>
+        <asp:Label ID="lblWrongPIN" runat="server" ForeColor="#FF1919" Text="Felaktig PIN kod, försök igen! :)" Visible="False"></asp:Label>
         </div>
         <div class="centrera">
             <asp:Button ID="Button1" runat="server" class="labelbuttons greybut" Text="1" Visible="False" OnClick="Button1_Click" />
