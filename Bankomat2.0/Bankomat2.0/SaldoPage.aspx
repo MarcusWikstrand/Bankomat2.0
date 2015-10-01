@@ -8,7 +8,9 @@
         <p class="litespace">Välj konto att se saldo för:</p>
     </div>
     <div class="centrera">
-        <asp:ListBox ID="ListOfAccounts" runat="server" CssClass="labelbuttons" OnSelectedIndexChanged="ListOfAccounts_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+        <asp:ListBox ID="ListOfAccounts" runat="server" CssClass="labelbuttons" OnSelectedIndexChanged="ListOfAccounts_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Value="PrimaryAccount"></asp:ListItem>
+        </asp:ListBox>
         <asp:Button ID="Back" runat="server" CssClass="labelbuttons greybut" OnClick="Back_Click" Text="Tillbaka" />
         <div>
             <asp:Label ID="lblShowAccount" runat="server" Text="Ditt saldo är:" Visible="False"></asp:Label>

@@ -49,16 +49,17 @@ namespace Bankomat2._0
         {
             // Clear both just in case
             ListTransactions.Items.Clear();
-
+            int index = ListOfAccounts.SelectedIndex < 0 ? 0 : ListOfAccounts.SelectedIndex;
+            string account = ListOfAccounts.Items[index].Text;
             // Get the total from this account
-            lblSummaSaldo.Text = atm.ViewBalance(ListOfAccounts.SelectedValue.ToString()).ToString();
+            lblSummaSaldo.Text = atm.ViewBalance(account).ToString();
             // Show the Account name info
             lblShowAccount.Visible = true;
             lblSummaSaldo.Visible = true;
             lblValuta.Visible = true;
 
             // Five latest transactions stuff
-            foreach (var item in atm.getFiveLatestTransactions(ListOfAccounts.SelectedValue))
+            foreach (var item in atm.getFiveLatestTransactions(ListOfAccounts.Items[index].Value))
             {
                 ListTransactions.Items.Add(item);
             }
