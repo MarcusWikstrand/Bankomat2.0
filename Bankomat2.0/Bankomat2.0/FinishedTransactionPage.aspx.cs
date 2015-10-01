@@ -40,6 +40,7 @@ namespace Bankomat2._0
         {
             // Mke sure we have udated ATM
             Session["ATM"] = atm;
+            Session.Clear();
             Server.Transfer("WelcomePage.aspx");
         }
 
