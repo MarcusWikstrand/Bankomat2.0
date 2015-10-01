@@ -51,7 +51,9 @@ namespace Bankomat2._0
             Session["ATM"] = atm;
             try
             {
-                atm.Authenticate(Session["cardNumber"].ToString(), int.Parse(this.PIN.Text));
+                string pinint = (string)Session["enteredPIN"];
+                int pinstring = int.Parse(pinint);
+                atm.Authenticate(Session["cardNumber"].ToString(), pinstring); 
                 // Mke sure we have udated ATM
                 Session["ATM"] = atm;
                 // Gå vidare till
@@ -104,7 +106,13 @@ namespace Bankomat2._0
         }
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            // Useless
+            Session["enteredPIN"] += PIN.Text.Substring(PIN.Text.Count() -1);
+            int numofchars = PIN.Text.Count();
+            PIN.Text = "";
+            for (int i = 0; i < numofchars; i++)
+            {
+                PIN.Text += "*";
+            }
         }
         protected void ButtonCancel_Click(object sender, EventArgs e)
         {
@@ -134,57 +142,68 @@ namespace Bankomat2._0
         {
 
             PIN.Text += "1";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             PIN.Text += "2";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
             PIN.Text += "3";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
             PIN.Text += "4";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button5_Click(object sender, EventArgs e)
         {
             PIN.Text += "5";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button6_Click(object sender, EventArgs e)
         {
             PIN.Text += "6";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button7_Click(object sender, EventArgs e)
         {
             PIN.Text += "7";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button8_Click(object sender, EventArgs e)
         {
             PIN.Text += "8";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button9_Click(object sender, EventArgs e)
         {
             PIN.Text += "9";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Button10_Click(object sender, EventArgs e)
         {
             PIN.Text += "0";
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void Backspace_Click(object sender, EventArgs e)
         {
             //Remove last number
             PIN.Text = PIN.Text.Substring(0, PIN.Text.Count() - 1);
+            TextBox1_TextChanged(sender, e);
         }
 
         protected void MakeItSo_Click(object sender, EventArgs e)
