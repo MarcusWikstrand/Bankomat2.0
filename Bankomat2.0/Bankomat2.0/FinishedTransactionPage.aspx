@@ -7,7 +7,7 @@
         <h2 class="litespace">Vänligen ta dina sedlar!</h2>
         <p class="litespace">Vill du nu:</p>
         <div>
-            <asp:Button ID="ButtonKvitto" runat="server" class="superknapp" Text="Få Kvitto?" />
+            <asp:Button ID="ButtonKvitto" runat="server" class="superknapp" Text="Få Kvitto?" OnClick="ButtonKvitto_Click" />
         </div>
         <div>
             <asp:Button ID="ButtonSaldo" runat="server" class="superknapp" Text=" Se Saldo" OnClick="Saldo_Click" />

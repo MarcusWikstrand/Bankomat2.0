@@ -42,5 +42,10 @@ namespace Bankomat2._0
             Session["ATM"] = atm;
             Server.Transfer("WelcomePage.aspx");
         }
+
+        protected void ButtonKvitto_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("ReceiptPage.aspx");
+        }
     }
 }
