@@ -53,7 +53,7 @@
     </div>
     <div class="centrera">
         <asp:DropDownList ID="DropDownListCards" class="kortin" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
-            <asp:ListItem Selected="True">Välj ett Kort!</asp:ListItem>
+            <asp:ListItem Selected="True">Välj ett kort!</asp:ListItem>
             <asp:ListItem>55555</asp:ListItem>
             <asp:ListItem>66666</asp:ListItem>
             <asp:ListItem>77777</asp:ListItem>
