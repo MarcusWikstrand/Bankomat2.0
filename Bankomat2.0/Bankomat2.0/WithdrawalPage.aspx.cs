@@ -64,6 +64,8 @@ namespace Bankomat2._0
             try
             {
                 atm.Withdraw(int.Parse(this.SaldoVisning.Text));
+                Server.Transfer("FinishedTransactionPage.aspx");
+
             }
             catch (Exception ex)
             {
